@@ -14,13 +14,9 @@ SHEET = GSPREAD_CLIENT.open('hang-man-choices')
 OPTIONS = SHEET.worksheet('options')
 
 # Columns/Word selection
-# columns = []
-# for ind in range(0, 2):
-#    column = OPTIONS.col_values(ind)
-#    columns.append(column)
-# easy_values = columns[0]
-# medium_values = columns[1]
-# hard_values = columns[2]
+easy_values = OPTIONS.col_values(1)
+medium_values = OPTIONS.col_values(2)
+hard_values = OPTIONS.col_values(3)
 
 
 def start_game():
@@ -29,10 +25,29 @@ def start_game():
     """
     print('1. start game 2. see rules')
     number = input('')
-    if number == 1:
+    if number == '1':
         print('starting game...')
-    elif number == 2:
+        choose_difficulty()
+    elif number == '2':
         print('displaying rules...')
     else:
         print('please pick a number')
 
+
+def choose_difficulty():
+    """
+    picks the difficulty from one to three, and picks a word from the column
+    """
+    print('Select your difficulty\n 1. Easy 2. Medium 3. Hard')
+    mode = input('')
+    if mode == '1':
+        print('easy mode selected')
+    elif mode == '2':
+        print('medium mode selected')
+    elif mode == '3':
+        print('hard mode selected')
+    else:
+        print('please select a number')
+
+
+start_game()
