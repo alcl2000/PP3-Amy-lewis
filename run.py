@@ -21,17 +21,25 @@ hard_values = OPTIONS.col_values(3)
 
 def start_game():
     """
-    starts the game by letting the user input a number
+    Checks if the user enters an interger, else raises an error
+    If valid number entered, lets user pick game or rules
     """
     print('1. start game 2. see rules')
-    number = input('')
-    if number == '1':
-        print('starting game...')
-        choose_difficulty()
-    elif number == '2':
-        print('displaying rules...')
-    else:
-        print('please pick a number')
+    while True:
+        number = input('')
+        try:
+            number_int = int(number)
+            if number_int == 1:
+                print('starting game...')
+                choose_difficulty()
+                break
+            elif number == 2:
+                print('displaying rules...')
+                break
+            else:
+                print('Please pick a valid number')
+        except ValueError:
+            print('Error: Please enter a number')
 
 
 def choose_difficulty():
