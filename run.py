@@ -79,7 +79,7 @@ def pick_word(difficulty):
     """
     takes the value of choose_difficulty to select the word for hangman
     """
-    choice = random.randrange(13)
+    choice = random.randrange(12)
     if difficulty == 1:
         secret_word = easy_values[choice]
     elif difficulty == 2:
@@ -94,10 +94,10 @@ def display_word(secret_word):
     breaks the selected word down into a list to then be used in hangman
     """
     letters = []
-    for ind in secret_word:
-        letters.append(secret_word[ind])
+    for letter in range(len(secret_word)):
+        letters.append(secret_word[letter])
     print(letters)
-        
+
 
 def main():
     """
@@ -106,7 +106,8 @@ def main():
     run_game = start_game()
     if run_game is True:
         difficulty = choose_difficulty()
-        pick_word(difficulty)
+        secret_word = pick_word(difficulty)
+        display_word(secret_word)
     else:
         display_rules()
 
