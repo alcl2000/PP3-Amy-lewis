@@ -96,7 +96,28 @@ def display_word(secret_word):
     letters = []
     for letter in range(len(secret_word)):
         letters.append(secret_word[letter])
-    print(letters)
+    for letter in letters:
+        print('_')
+    hangman(letters)
+
+
+def hangman(letters):
+    for x in range(10):
+        guess = input('Choose a letter:')
+        try:
+            for letter in letters:
+                if guess == letter:
+                    print('Correct letter!')
+                else:
+                    print('Incorrect guess, Please try again')
+        except TypeError:
+            print('Please enter a letter')
+    else:
+        end_game()
+
+
+def end_game():
+    pass
 
 
 def main():
