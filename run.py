@@ -44,6 +44,13 @@ def start_game():
             print('Error: Please enter a number')
 
 
+def disply_rules():
+    """
+    will display the rules for the player when this option is selected
+    """
+    pass
+
+
 def choose_difficulty():
     """
     picks the difficulty from one to three, and picks a word from the column
@@ -55,17 +62,18 @@ def choose_difficulty():
         try:
             if mode == 1:
                 print('easy mode selected')
-                pick_word(1)
+                return 1
             elif mode == 2:
                 print('medium mode selected')
-                pick_word(2)
+                return 2
             elif mode == 3:
                 print('hard mode selected')
-                pick_word(3)
+                return 3
             else:
                 print('Please select a difficulty ')
         except ValueError:
             print('Please enter a valid number')
+        break
 
 
 def pick_word(difficulty):
@@ -80,6 +88,15 @@ def pick_word(difficulty):
     elif difficulty == 3:
         secret_word = hard_values[choice]
     return secret_word
-    
 
-start_game()
+
+def main():
+    """
+    main function calls
+    """
+    start_game()
+    difficulty = choose_difficulty()
+    pick_word(difficulty)
+
+
+main()
