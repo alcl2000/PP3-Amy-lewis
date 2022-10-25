@@ -43,7 +43,7 @@ def start_game():
             print('Error: Please enter a number')
 
 
-def disply_rules():
+def display_rules():
     """
     will display the rules for the player when this option is selected
     """
@@ -89,6 +89,16 @@ def pick_word(difficulty):
     return secret_word
 
 
+def display_word(secret_word):
+    """
+    breaks the selected word down into a list to then be used in hangman
+    """
+    letters = []
+    for ind in secret_word:
+        letters.append(secret_word[ind])
+    print(letters)
+        
+
 def main():
     """
     main function calls
@@ -98,7 +108,7 @@ def main():
         difficulty = choose_difficulty()
         pick_word(difficulty)
     else:
-        disply_rules()
+        display_rules()
 
 
 main()
