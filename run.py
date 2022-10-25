@@ -32,11 +32,10 @@ def start_game():
             number_int = int(number)
             if number_int == 1:
                 print('starting game...')
-                choose_difficulty()
-                break
+                return True
             elif number == 2:
                 print('displaying rules...')
-                break
+                return False
             else:
                 print('Please pick a valid number')
                 break
@@ -94,9 +93,12 @@ def main():
     """
     main function calls
     """
-    start_game()
-    difficulty = choose_difficulty()
-    pick_word(difficulty)
+    run_game = start_game()
+    if run_game is True:
+        difficulty = choose_difficulty()
+        pick_word(difficulty)
+    else:
+        disply_rules()
 
 
 main()
