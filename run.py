@@ -74,11 +74,12 @@ def pick_word(difficulty):
     """
     choice = random.randrange(13)
     if difficulty == 1:
-        print(easy_values(choice))
+        secret_word = easy_values[choice]
     elif difficulty == 2:
-        print(medium_values(choice))
+        secret_word = medium_values[choice]
     elif difficulty == 3:
-        print(hard_values(choice))
-
+        secret_word = hard_values[choice]
+    return secret_word
+    
 
 start_game()
