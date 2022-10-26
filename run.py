@@ -20,11 +20,16 @@ medium_values = OPTIONS.col_values(2)
 hard_values = OPTIONS.col_values(3)
 
 
-def check_interger():
+def check_interger(x):
     """
     checks if the user input is or isn't an interger and returns t/f values 
     dependant on that 
     """
+    try:
+        val = int(x)
+        return True, val
+    except ValueError:
+        return False, val 
 
 
 def start_game():
@@ -48,7 +53,7 @@ def start_game():
                 break
         except ValueError:
             print('Error: Please enter a number')
-
+            
 
 def display_rules():
     """
