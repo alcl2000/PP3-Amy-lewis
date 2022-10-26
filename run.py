@@ -26,10 +26,9 @@ def check_interger(x):
     dependant on that 
     """
     try:
-        val = int(x)
-        return True, val
+        return True
     except ValueError:
-        return False, val 
+        return False
 
 
 def start_game():
@@ -38,22 +37,20 @@ def start_game():
     If valid number entered, lets user pick game or rules
     """
     print('1. start game 2. see rules')
-    while True:
-        number = input('')
-        try:
-            number_int = int(number)
-            if number_int == 1:
-                print('starting game...')
-                return True
-            elif number == 2:
-                print('displaying rules...')
-                return False
-            else:
-                print('Please pick a valid number')
-                break
-        except ValueError:
-            print('Error: Please enter a number')
-            
+    number = input('')
+    interger = check_interger(number)
+    if interger is True:
+        if interger == 1:
+            print('starting game...')
+            return True
+        elif number == 2:
+            print('displaying rules...')
+            return False
+        else:
+            print('Please pick a valid number')
+    else:
+        print('Please enter a number')
+         
 
 def display_rules():
     """
