@@ -26,6 +26,7 @@ def check_interger(x):
     dependant on that 
     """
     try:
+        int(x)
         return True
     except ValueError:
         return False
@@ -50,7 +51,7 @@ def start_game():
             print('Please pick a valid number')
     else:
         print('Please enter a number')
-         
+
 
 def display_rules():
     """
@@ -108,23 +109,28 @@ def display_word(secret_word):
         letters.append(secret_word[letter])
     for letter in letters:
         to_test.append('_')
+    print(to_test)
     hangman(letters, to_test)
 
 
 def hangman(letters, to_test):
-    for x in range(10):
+    incorrect_guesses = 10
+    # y = letters.len() 
+    while incorrect_guesses > 0:
         guess = input('Choose a letter:')
-        try:
+        is_letter = check_interger(guess)
+        if is_letter is False:
             for letter in letters:
                 if guess == letter:
                     print('Correct letter!')
+                    break
                 else:
-                    print('Incorrect guess, Please try again')
-        except TypeError:
-            print('Please enter a letter')
-    else:
-        end_game()
-
+                    print('Incorrect Guess')
+        else:
+            print('Please enter a Valid letter')
+            incorrect_guesses -= 1
+    end_game()
+                
 
 def end_game():
     pass
