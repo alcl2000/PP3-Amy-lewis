@@ -20,6 +20,13 @@ medium_values = OPTIONS.col_values(2)
 hard_values = OPTIONS.col_values(3)
 
 
+def check_interger():
+    """
+    checks if the user input is or isn't an interger and returns t/f values 
+    dependant on that 
+    """
+
+
 def start_game():
     """
     Checks if the user enters an interger, else raises an error
@@ -94,14 +101,15 @@ def display_word(secret_word):
     breaks the selected word down into a list to then be used in hangman
     """
     letters = []
+    to_test = []
     for letter in range(len(secret_word)):
         letters.append(secret_word[letter])
     for letter in letters:
-        print('_')
-    hangman(letters)
+        to_test.append('_')
+    hangman(letters, to_test)
 
 
-def hangman(letters):
+def hangman(letters, to_test):
     for x in range(10):
         guess = input('Choose a letter:')
         try:
