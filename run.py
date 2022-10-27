@@ -8,6 +8,7 @@ SCOPE = [
     "https://www.googleapis.com/auth/drive"
 ]
 
+# Spreadsheets values
 CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
@@ -57,6 +58,11 @@ easy_values = OPTIONS.col_values(1)
 medium_values = OPTIONS.col_values(2)
 hard_values = OPTIONS.col_values(3)
 
+# Universal for gameplay
+letters = []
+to_test = []
+already_guessed = []
+
 
 def check_interger(x):
     """
@@ -85,7 +91,7 @@ def start_game():
     print('''
                    ALCATRAZ  __
                     PRISON  /__\             
-                ____________|  |             
+                ____________|##|             
                 |_|_|_|_|_|_|  |             
                 |_|_|_|_|_|_|__|            
                 A@\|_|_|_|_|_|/@@Aa          
@@ -147,7 +153,7 @@ def choose_difficulty():
     print('''
             /`````````````\`
             | H E L P  M E |
-            \............./
+            `\............./
                  |
     ================================
     ||     ||     ||     ||     ||
@@ -198,8 +204,6 @@ def display_word(secret_word):
     """
     breaks the selected word down into a list to then be used in hangman
     """
-    letters = []
-    to_test = []
     for letter in range(len(secret_word)):
         letters.append(secret_word[letter])
     for letter in letters:
@@ -211,25 +215,42 @@ def display_word(secret_word):
 
 def hangman(letters, to_test):
     incorrect_guesses = 6
-    # y = letters.len() 
-    while incorrect_guesses > 0:
+    while incorrect_guesses >= 0:
         guess = input('Choose a letter:')
         is_letter = check_interger(guess)
+        print(letters)
+        print(HANGMAN_PICS[incorrect_guesses])
+        print(to_test)
         if is_letter is False:
-            for letter in letters:
-                if guess == letter:
-                    print('Correct letter!')
-                    break
-                else:
-                    print('Incorrect Guess')
-                    incorrect_guesses -= 1
-                    break
-            print(HANGMAN_PICS[incorrect_guesses])
-            print(to_test)
+            check_letters = check_letter(guess, letters)
+            if check_letters is True:
+                pass
+            else:
+                incorrect_guesses -= 1
         else:
             print('Please enter a Valid letter')
     end_game()
-                
+
+
+def check_letter(x, letters):
+    """
+    Function to check all of the letters in the word array
+    before printing or returning the result to the user
+    """
+    for ind in letters:
+        if x == already_guessed[ind]:
+            print('Letter already guessed! Please enter a different one')
+        else:
+            already_guessed.append(x)
+            print(already_guessed)
+            for letter in letters:
+                if x == letter:
+                    print('Correct letter!')
+                    return True
+                else:
+                    print('Incorrect Guess')
+                    return False
+        
 
 def end_game():
     pass
