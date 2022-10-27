@@ -14,6 +14,44 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hang-man-choices')
 OPTIONS = SHEET.worksheet('options')
 
+HANGMAN_PICS = [
+  '''+---+
+         |
+         |
+         |
+     =====''',
+  '''+---+
+     o   |
+         |
+         |
+     =====''', '''
+    +---+
+    o   |
+    |   |
+        |
+    =====''', '''
+    +---+
+    o   |
+   /|   |
+        |
+    =====''', '''
+   +---+
+   o   |
+  /|\  |
+       |
+    ====''', '''
+   +---+
+   o   |
+  /|\  |
+  /    |
+    ====''', '''
+   +---+
+   o   |
+  /|\  |
+  / \  |
+    ===='''
+]
+
 # Columns/Word selection
 easy_values = OPTIONS.col_values(1)
 medium_values = OPTIONS.col_values(2)
@@ -25,11 +63,14 @@ def check_interger(x):
     checks if the user input is or isn't an interger and returns t/f values 
     dependant on that 
     """
-    try:
-        int(x)
-        return True
-    except ValueError:
-        return False
+    if len(x) == 1:
+        try:
+            int(x)
+            return True
+        except ValueError:
+            return False
+    else:
+        return None
 
 
 def start_game():
@@ -114,21 +155,22 @@ def display_word(secret_word):
 
 
 def hangman(letters, to_test):
-    incorrect_guesses = 10
+    incorrect_guesses = 6
     # y = letters.len() 
     while incorrect_guesses > 0:
         guess = input('Choose a letter:')
         is_letter = check_interger(guess)
         if is_letter is False:
-            for letter in letters:
-                if guess == letter:
+            for ind in letters:
+                if guess == letters[ind]:
                     print('Correct letter!')
                     break
                 else:
                     print('Incorrect Guess')
+                    incorrect_guesses -= 1
+                    break
         else:
             print('Please enter a Valid letter')
-            incorrect_guesses -= 1
     end_game()
                 
 
