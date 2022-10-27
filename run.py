@@ -96,11 +96,11 @@ def start_game():
     number = input('')
     interger = check_interger(number)
     if interger is True:
-        number_x = int(number)
-        if number_x == 1:
+        number = int(number)
+        if number == 1:
             print('starting game...')
             return True
-        elif number_x == 2:
+        elif number == 2:
             print('displaying rules...')
             return False
         else:
@@ -131,6 +131,13 @@ def display_rules():
     print('''
     If you win, you can add your score to the leader board!
     ''')
+    print('''
+    1. Return home''')
+    x = input('')
+    if check_interger(x) is True:
+        start_game()
+    else:
+        start_game()
 
 
 def choose_difficulty():
@@ -143,7 +150,7 @@ def choose_difficulty():
             \............./
                  |
     ================================
-    ||     ||     ||     ||     || 
+    ||     ||     ||     ||     ||
     ||    _||     ||     ||_    ||
     ||   (__D     ||     C__)   ||
     ||   (__D     ||     C__)   ||
