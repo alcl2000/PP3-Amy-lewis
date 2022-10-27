@@ -96,10 +96,11 @@ def start_game():
     number = input('')
     interger = check_interger(number)
     if interger is True:
-        if interger == 1:
+        number_x = int(number)
+        if number_x == 1:
             print('starting game...')
             return True
-        elif number == 2:
+        elif number_x == 2:
             print('displaying rules...')
             return False
         else:
@@ -112,7 +113,24 @@ def display_rules():
     """
     will display the rules for the player when this option is selected
     """
-    pass
+    print(''' 
+    /_ /  /\   /\  / /```     /\ /\   /\   /\  / 
+   /  /  /--\ /  \/ /__``/   /  |  \ /--\ /  \/
+    ''')
+    print('''
+    This a game of hangman
+    1. From the main menu select "Play Game" by pressing 1
+    2. Select your game mode
+    - Either easy, medium or hard by pressing 1, 2, or 3
+    - Easy mode has the shortest words, medium slightly longer etc
+    3. When prompted please enter a letter into the terminal
+    4. The program will then test your answer against the scecret word
+    5. If your answer is correct, it will be displayed in the secret word
+    6. If your answer is incorrect, a line will be added to the hangman
+    7. You only get 6 incorrect guesses - so be careful!''')
+    print('''
+    If you win, you can add your score to the leader board!
+    ''')
 
 
 def choose_difficulty():
