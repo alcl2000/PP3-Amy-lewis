@@ -14,20 +14,20 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hang-man-choices')
 OPTIONS = SHEET.worksheet('options')
 
-HANGMAN_PICS = [
-  '''+---+
-         |
-         |
-         |
-     =====''',
-  '''+---+
+HANGMAN_PICS = ['''
+     +---+
      o   |
-         |
-         |
+    /|\  |
+    / \  |
+     =====''', '''
+     +---+
+     o   |
+    /|\  |
+    /    |
      =====''', '''
     +---+
     o   |
-    |   |
+   /|\  |
         |
     =====''', '''
     +---+
@@ -37,20 +37,20 @@ HANGMAN_PICS = [
     =====''', '''
    +---+
    o   |
-  /|\  |
+   |   |
        |
     ====''', '''
    +---+
    o   |
-  /|\  |
-  /    |
+       |
+       |
     ====''', '''
    +---+
-   o   |
-  /|\  |
-  / \  |
-    ===='''
-]
+       |
+       |
+       |
+    ====
+''']
 
 # Columns/Word selection
 easy_values = OPTIONS.col_values(1)
@@ -78,6 +78,20 @@ def start_game():
     Checks if the user enters an interger, else raises an error
     If valid number entered, lets user pick game or rules
     """
+    print(''' 
+    /_ /  /\   /\  / /```     /\ /\   /\   /\  / 
+   /  /  /--\ /  \/ /__``/   /  |  \ /--\ /  \/
+    ''')
+    print('''
+                   ALCATRAZ  __
+                    PRISON  /__\             
+                ____________|  |             
+                |_|_|_|_|_|_|  |             
+                |_|_|_|_|_|_|__|            
+                A@\|_|_|_|_|_|/@@Aa          
+            aaA@@@@@@@@@@@@@@@@@@@aaaA     
+            A@@@@@@@@@@@DWB@@@@@@@@@@@@A    
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ''')
     print('1. start game 2. see rules')
     number = input('')
     interger = check_interger(number)
@@ -105,6 +119,21 @@ def choose_difficulty():
     """
     picks the difficulty from one to three, and picks a word from the column
     """
+    print('''
+            /`````````````\`
+            | H E L P  M E |
+            \............./
+                 |
+    ================================
+    ||     ||     ||     ||     || 
+    ||    _||     ||     ||_    ||
+    ||   (__D     ||     C__)   ||
+    ||   (__D     ||     C__)   ||
+    ||   (__D     ||     C__)   ||
+    ||   (__D     ||     C__)   ||
+    ||     ||     ||     ||     ||
+    ================================
+    ''')
     print('Select your difficulty\n 1. Easy 2. Medium 3. Hard')
     while True:
         mode = input('')
@@ -150,6 +179,7 @@ def display_word(secret_word):
         letters.append(secret_word[letter])
     for letter in letters:
         to_test.append('_')
+    print(HANGMAN_PICS[6])
     print(to_test)
     hangman(letters, to_test)
 
@@ -161,14 +191,16 @@ def hangman(letters, to_test):
         guess = input('Choose a letter:')
         is_letter = check_interger(guess)
         if is_letter is False:
-            for ind in letters:
-                if guess == letters[ind]:
+            for letter in letters:
+                if guess == letter:
                     print('Correct letter!')
                     break
                 else:
                     print('Incorrect Guess')
                     incorrect_guesses -= 1
                     break
+            print(HANGMAN_PICS[incorrect_guesses])
+            print(to_test)
         else:
             print('Please enter a Valid letter')
     end_game()
