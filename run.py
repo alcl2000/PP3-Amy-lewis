@@ -31,11 +31,11 @@ HANGMAN_PICS = ['''
    /|\  |
         |
     =====''', '''
-     +---+
-     o   |
-    /|   |
-         |
-     =====''', '''
+    +---+
+    o   |
+   /|   |
+        |
+    =====''', '''
    +---+
    o   |
    |   |
@@ -151,9 +151,9 @@ def choose_difficulty():
     picks the difficulty from one to three, and picks a word from the column
     """
     print('''
-            /``````````````\`
+            /`````````````\`
             | H E L P  M E |
-            \............./
+            `\............./
                  |
     ================================
     ||     ||     ||     ||     ||
@@ -224,34 +224,32 @@ def hangman(letters, to_test):
         if is_letter is False:
             check_letters = check_letter(guess, letters)
             if check_letters is True:
-                print('Correct!')
+                pass
             else:
-                print('Incorrect answer, please try again')
                 incorrect_guesses -= 1
         else:
             print('Please enter a Valid letter')
     end_game()
 
 
-def check_letter(guess, letters):
+def check_letter(x, letters):
     """
     Function to check all of the letters in the word array
     before printing or returning the result to the user
     """
-    correct_letters = [] 
-    for letter in letters:
-        if guess in already_guessed:
+    for ind in letters:
+        if x == already_guessed[ind]:
             print('Letter already guessed! Please enter a different one')
         else:
-            already_guessed.append(guess)
+            already_guessed.append(x)
             print(already_guessed)
             for letter in letters:
-                if guess in letters:
-                    correct_letters.append(guess)
-            if len(correct_letters) > 0:
-                return True
-            else:
-                return False
+                if x == letter:
+                    print('Correct letter!')
+                    return True
+                else:
+                    print('Incorrect Guess')
+                    return False
         
 
 def end_game():
