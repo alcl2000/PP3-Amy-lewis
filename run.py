@@ -230,7 +230,7 @@ def hangman(letters, to_test):
                 incorrect_guesses -= 1
         else:
             print('Please enter a Valid letter')
-    end_game()
+    end_game(incorrect_guesses, letters)
 
 
 def check_letter(guess, letters):
@@ -254,8 +254,13 @@ def check_letter(guess, letters):
                 return False
         
 
-def end_game():
-    pass
+def end_game(incorrect_guesses, letters):
+    score = incorrect_guesses * len(letters)
+    print('Game Over!!')
+    if score > 0:
+        print(f'Congratulations!\nYour score is: {score}')
+    else:
+        print("Sorry! You weren't able to save the man")
 
 
 def main():
