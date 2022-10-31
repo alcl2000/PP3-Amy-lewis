@@ -252,9 +252,18 @@ def check_letter(guess, letters):
                 return True
             else:
                 return False
+
+
+def reveal_word(correct_guess, to_test, letters):
+    """
+    function to reveal letters as user guesses them correctly
+    """
         
 
 def end_game(incorrect_guesses, letters):
+    """
+    ends the game and displays the user's score
+    """
     score = incorrect_guesses * len(letters)
     print('Game Over!!')
     if score > 0:
