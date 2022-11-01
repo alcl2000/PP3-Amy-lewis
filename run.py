@@ -215,7 +215,7 @@ def display_word(secret_word):
     hangman(letters, to_test)
 
 
-def hangman(letters, to_test):
+def hangman_old(letters, to_test):
     correct_guesses = 1
     incorrect_guesses = 6
     while correct_guesses <= len(letters):
@@ -238,6 +238,20 @@ def hangman(letters, to_test):
             else:
                 print('Please enter a Valid letter')
         end_game(incorrect_guesses, letters)
+
+
+def hangman(letters, to_test):
+    """
+    Main game loop
+    Takes the secret word and covered up word list
+    Tests user responses against the secret word
+    Reveals the secret word when guessed
+    """      
+    correct_answers = 0  
+    user_guess = input('Choose a letter: ')
+    while user_guess:
+        if user_guess in letters:
+            correct_answers += 1
 
 
 def check_letter(guess, letters, to_test):
