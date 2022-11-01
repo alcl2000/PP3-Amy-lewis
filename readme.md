@@ -20,3 +20,7 @@ This project is a simple hangman game created in python
 ### Secret word not matching the user input
 
 The secret word is being split into a list, however the input is not being matched up to the correspinding letter in the list.
+
+### No way to handle duplicate letters in words
+
+### Game not automatically ending on a correct answer
