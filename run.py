@@ -98,17 +98,19 @@ def start_game():
             aaA@@@@@@@@@@@@@@@@@@@aaaA     
             A@@@@@@@@@@@DWB@@@@@@@@@@@@A    
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ''')
-    print('1. start game 2. see rules')
+    print('1. Start game 2. See rules 3. See leaderboard')
     number = input('')
     interger = check_interger(number)
     if interger is True:
         number = int(number)
         if number == 1:
-            print('starting game...')
+            print('Starting game...')
             return True
         elif number == 2:
-            print('displaying rules...')
+            print('Displaying rules...')
             return False
+        elif number == 3:
+            print('Displaying leaderboard...')
         else:
             print('Please pick a valid number')
     else:
@@ -214,26 +216,31 @@ def display_word(secret_word):
 
 
 def hangman(letters, to_test):
+    correct_guesses = 1
     incorrect_guesses = 6
-    while incorrect_guesses >= 0:
-        guess = input('Choose a letter:')
-        is_letter = check_interger(guess)
-        print(letters)
-        print(HANGMAN_PICS[incorrect_guesses])
-        print(to_test)
-        if is_letter is False:
-            check_letters = check_letter(guess, letters)
-            if check_letters is True:
-                print('Correct!')
+    while correct_guesses <= len(letters):
+        while incorrect_guesses >= 0:
+            guess = input('Choose a letter:')
+            is_letter = check_interger(guess)
+            print(letters)
+            print(HANGMAN_PICS[incorrect_guesses])
+            print(to_test)
+            if is_letter is False:
+                check_letters = check_letter(guess, letters, to_test)
+                if check_letters is True:
+                    print('Correct!')
+                    correct_guesses += 1
+                    print(correct_guesses)
+                else:
+                    print('Incorrect answer, please try again')
+                    incorrect_guesses -= 1
+                    print(f'Remaining guesses:{(incorrect_guesses+1)}')
             else:
-                print('Incorrect answer, please try again')
-                incorrect_guesses -= 1
-        else:
-            print('Please enter a Valid letter')
-    end_game(incorrect_guesses, letters)
+                print('Please enter a Valid letter')
+        end_game(incorrect_guesses, letters)
 
 
-def check_letter(guess, letters):
+def check_letter(guess, letters, to_test):
     """
     Function to check all of the letters in the word array
     before printing or returning the result to the user
@@ -242,6 +249,7 @@ def check_letter(guess, letters):
     for letter in letters:
         if guess in already_guessed:
             print('Letter already guessed! Please enter a different one')
+            break
         else:
             already_guessed.append(guess)
             print(already_guessed)
@@ -258,7 +266,7 @@ def reveal_word(correct_guess, to_test, letters):
     """
     function to reveal letters as user guesses them correctly
     """
-        
+    
 
 def end_game(incorrect_guesses, letters):
     """
