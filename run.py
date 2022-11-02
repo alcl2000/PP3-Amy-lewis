@@ -273,7 +273,7 @@ def hangman(letters, to_test):
             print('Please enter a valid letter')
 
 
-def check_letter(guess, letters):
+def check_letter_old(guess, letters):
     """
     Function to check all of the letters in the word array
     before printing or returning the result to the user
@@ -293,6 +293,26 @@ def check_letter(guess, letters):
                 return True
             else:
                 return False
+
+
+def check_letter(guess, letters):
+    """
+    Function to check all the letters in the word array 
+    Returns the result to main hangman loop
+    Also checks if a letter has previously been entered to prevent re-entry
+    """
+    correct_letters = []
+    for letter in letters:
+        if guess in already_guessed:
+            print('Letter already guessed! Please enter a different one')
+            break
+        else:
+            already_guessed.append(guess)
+            print(already_guessed)
+            for letter in letters:
+                if guess in letters:
+                    correct_letters.append(guess)
+                    return len(correct_letters)
 
 
 def reveal_word(correct_guess, to_test, letters):
