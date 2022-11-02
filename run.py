@@ -226,7 +226,7 @@ def hangman_old(letters, to_test):
             print(HANGMAN_PICS[incorrect_guesses])
             print(to_test)
             if is_letter is False:
-                check_letters = check_letter(guess, letters, to_test)
+                check_letters = check_letter(guess, letters)
                 if check_letters is True:
                     print('Correct!')
                     correct_guesses += 1
@@ -246,15 +246,34 @@ def hangman(letters, to_test):
     Takes the secret word and covered up word list
     Tests user responses against the secret word
     Reveals the secret word when guessed
-    """      
+    """ 
+    incorrect_guesses = 6     
     correct_answers = 0  
     user_guess = input('Choose a letter: ')
+    is_letter = check_interger(user_guess)
+    print(letters)
+    print(HANGMAN_PICS[incorrect_guesses])
+    print(to_test)
     while user_guess:
-        if user_guess in letters:
-            correct_answers += 1
+        if is_letter is False:
+            check_letters = check_letter(user_guess, letters)
+            # If statement to handle the event that more than one letter is 
+            # guessed correctly (ie a letter is in the word more than once)
+            if check_letters == 1:
+                correct_answers += 1
+                print('Correct!')
+            elif check_letters == 2:
+                correct_answers += 2
+                print('Correct!')
+            else:
+                print('Incorrect answer, please try again')
+                incorrect_guesses -= 1
+                print(f'Remaining guesses: {(incorrect_guesses + 1)}')
+        else:
+            print('Please enter a valid letter')
 
 
-def check_letter(guess, letters, to_test):
+def check_letter(guess, letters):
     """
     Function to check all of the letters in the word array
     before printing or returning the result to the user
