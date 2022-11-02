@@ -249,28 +249,31 @@ def hangman(letters, to_test):
     """ 
     incorrect_guesses = 6     
     correct_answers = 0  
-    user_guess = input('Choose a letter: ')
-    is_letter = check_interger(user_guess)
-    print(letters)
-    print(HANGMAN_PICS[incorrect_guesses])
-    print(to_test)
-    while user_guess:
-        if is_letter is False:
-            check_letters = check_letter(user_guess, letters)
-            # If statement to handle the event that more than one letter is 
-            # guessed correctly (ie a letter is in the word more than once)
-            if check_letters == 1:
-                correct_answers += 1
-                print('Correct!')
-            elif check_letters == 2:
-                correct_answers += 2
-                print('Correct!')
+
+    while correct_answers < len(letters):   
+        user_guess = input('Choose a letter: ')
+        is_letter = check_interger(user_guess)
+        print(letters)
+        print(HANGMAN_PICS[incorrect_guesses])
+        print(to_test)
+        while incorrect_guesses > 0:
+            if is_letter is False:
+                check_letters = check_letter(user_guess, letters)
+                # If statement to handle the event that more than one letter is 
+                # guessed correctly (ie a letter is in the word more than once)
+                if check_letters == 1:
+                    correct_answers += 1
+                    print('Correct!')
+                elif check_letters == 2:
+                    correct_answers += 2
+                    print('Correct!')
+                else:
+                    print('Incorrect answer, please try again')
+                    incorrect_guesses -= 1
+                    print(f'Remaining guesses: {(incorrect_guesses + 1)}')
+                    break
             else:
-                print('Incorrect answer, please try again')
-                incorrect_guesses -= 1
-                print(f'Remaining guesses: {(incorrect_guesses + 1)}')
-        else:
-            print('Please enter a valid letter')
+                print('Please enter a valid letter')
 
 
 def check_letter_old(guess, letters):
@@ -312,7 +315,7 @@ def check_letter(guess, letters):
             for letter in letters:
                 if guess in letters:
                     correct_letters.append(guess)
-                    return len(correct_letters)
+                return len(correct_letters)
 
 
 def reveal_word(correct_guess, to_test, letters):
