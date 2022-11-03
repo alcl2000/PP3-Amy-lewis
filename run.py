@@ -249,29 +249,31 @@ def hangman(letters):
     Reveals the secret word when guessed
     """ 
     incorrect_guesses = 6      
-    correct_guess = 0
-    
+   
     while '_' in to_test and incorrect_guesses > 0:
-        user_guess = input('Choose a letter: ')
-        user_guess = user_guess.lower()   
+        user_guess = input('Choose a letter: ')   
         is_letter = check_interger(user_guess)
         print(letters)
         print(HANGMAN_PICS[incorrect_guesses])
         print(to_test)
+        correct_guess = 0
         if is_letter is False:
+            user_guess = user_guess.lower()
             if user_guess not in already_guessed:
+                print(already_guessed)
                 already_guessed.append(user_guess)
-                for pos, letter in enumerate(letters):
+                for letter in letters:
                     if user_guess == letter:
                         print(letter)
                         correct_guess += 1
-                        print('Correct answer!')
                     else:
                         print('_')
-                        incorrect_guesses -= 1
-                        print('Incorrect answer, please try again')
-                        print(f'You have: {(incorrect_guesses + 1)} guesses\
-                                remaining')
+                if correct_guess > 0:
+                    print('Correct answer!')
+                else:
+                    incorrect_guesses -= 1
+                    print(f'Incorrect answer, please try again\
+                        You have: {(incorrect_guesses + 1)} guesses remaining')
             else:
                 print('Letter already guessed\n Please try again!')
         else:
