@@ -62,6 +62,7 @@ hard_values = OPTIONS.col_values(3)
 letters = []
 to_test = []
 already_guessed = []
+position_of_letter = []
 
 
 def check_interger(x):
@@ -212,7 +213,7 @@ def display_word(secret_word):
         to_test.append('_')
     print(HANGMAN_PICS[6])
     print(to_test)
-    hangman(letters, to_test)
+    hangman(letters)
 
 
 def hangman_old(letters, to_test):
@@ -240,40 +241,42 @@ def hangman_old(letters, to_test):
         end_game(incorrect_guesses, letters)
 
 
-def hangman(letters, to_test):
+def hangman(letters):
     """
     Main game loop
     Takes the secret word and covered up word list
     Tests user responses against the secret word
     Reveals the secret word when guessed
     """ 
-    incorrect_guesses = 6     
-    correct_answers = 0  
-
-    while correct_answers < len(letters):   
+    incorrect_guesses = 6      
+    correct_guess = 0
+    
+    while '_' in to_test and incorrect_guesses > 0:
         user_guess = input('Choose a letter: ')
+        user_guess = user_guess.lower()   
         is_letter = check_interger(user_guess)
         print(letters)
         print(HANGMAN_PICS[incorrect_guesses])
         print(to_test)
-        while incorrect_guesses > 0:
-            if is_letter is False:
-                check_letters = check_letter(user_guess, letters)
-                # If statement to handle the event that more than one letter is 
-                # guessed correctly (ie a letter is in the word more than once)
-                if check_letters == 1:
-                    correct_answers += 1
-                    print('Correct!')
-                elif check_letters == 2:
-                    correct_answers += 2
-                    print('Correct!')
-                else:
-                    print('Incorrect answer, please try again')
-                    incorrect_guesses -= 1
-                    print(f'Remaining guesses: {(incorrect_guesses + 1)}')
-                    break
+        if is_letter is False:
+            if user_guess not in already_guessed:
+                already_guessed.append(user_guess)
+                for pos, letter in enumerate(letters):
+                    if user_guess == letter:
+                        print(letter)
+                        correct_guess += 1
+                        print('Correct answer!')
+                    else:
+                        print('_')
+                        incorrect_guesses -= 1
+                        print('Incorrect answer, please try again')
+                        print(f'You have: {(incorrect_guesses + 1)} guesses\
+                                remaining')
             else:
-                print('Please enter a valid letter')
+                print('Letter already guessed\n Please try again!')
+        else:
+            print('Please enter a valid letter')
+    end_game(incorrect_guesses, letters)
 
 
 def check_letter_old(guess, letters):
@@ -315,7 +318,7 @@ def check_letter(guess, letters):
             for letter in letters:
                 if guess in letters:
                     correct_letters.append(guess)
-                return len(correct_letters)
+                    return correct_letters
 
 
 def reveal_word(correct_guess, to_test, letters):
