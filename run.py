@@ -193,7 +193,7 @@ def pick_word(difficulty):
     """
     takes the value of choose_difficulty to select the word for hangman
     """
-    choice = random.randrange(12)
+    choice = random.randrange(11)
     if difficulty == 1:
         secret_word = easy_values[choice]
     elif difficulty == 2:
@@ -213,7 +213,7 @@ def display_word(secret_word):
         to_test.append('_')
     print(HANGMAN_PICS[6])
     print(to_test)
-    hangman(letters)
+    hangman(letters, to_test)
 
 
 def hangman_old(letters, to_test):
@@ -241,39 +241,39 @@ def hangman_old(letters, to_test):
         end_game(incorrect_guesses, letters)
 
 
-def hangman(letters):
+def hangman(letters, to_test):
     """
     Main game loop
     Takes the secret word and covered up word list
     Tests user responses against the secret word
     Reveals the secret word when guessed
     """ 
-    incorrect_guesses = 6      
+    incorrect_guesses = 7      
    
     while '_' in to_test and incorrect_guesses > 0:
         user_guess = input('Choose a letter: ')   
         is_letter = check_interger(user_guess)
         print(letters)
-        print(HANGMAN_PICS[incorrect_guesses])
-        print(to_test)
+        print(HANGMAN_PICS[(incorrect_guesses - 1)])
         correct_guess = 0
         if is_letter is False:
             user_guess = user_guess.lower()
             if user_guess not in already_guessed:
                 print(already_guessed)
                 already_guessed.append(user_guess)
-                for letter in letters:
-                    if user_guess == letter:
-                        print(letter)
+                ind = 0
+                for ind in to_test and letters:
+                    if user_guess == letters[int(ind)]:
+                        print(letters[int(ind)])
                         correct_guess += 1
                     else:
-                        print('_')
+                        print(to_test[int(ind)])
                 if correct_guess > 0:
                     print('Correct answer!')
                 else:
                     incorrect_guesses -= 1
                     print(f'Incorrect answer, please try again\
-                        You have: {(incorrect_guesses + 1)} guesses remaining')
+                        You have: {(incorrect_guesses)} guesses remaining')
             else:
                 print('Letter already guessed\n Please try again!')
         else:
