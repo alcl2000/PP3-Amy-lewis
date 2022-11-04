@@ -14,7 +14,9 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('hang-man-choices')
 OPTIONS = SHEET.worksheet('options')
+LEADERBOARD = SHEET.worksheet('leaderboard')
 
+# ACSII ART
 HANGMAN_PICS = ['''
      +---+
      o   |
@@ -58,6 +60,12 @@ easy_values = OPTIONS.col_values(1)
 medium_values = OPTIONS.col_values(2)
 hard_values = OPTIONS.col_values(3)
 
+# Leaderboard values
+top_three = LEADERBOARD.col_values(1)
+first_place = LEADERBOARD.row_values(1)
+second_place = LEADERBOARD.row_values(2)
+third_place = LEADERBOARD.row_values(3)
+
 # Universal for gameplay
 letters = []
 to_test = []
@@ -86,8 +94,14 @@ def start_game():
     If valid number entered, lets user pick game or rules
     """
     print(''' 
-    /_ /  /\   /\  / /```     /\ /\   /\   /\  / 
-   /  /  /--\ /  \/ /__``/   /  |  \ /--\ /  \/
+        _                                             
+        | |                                            
+        | |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+        | '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+        | | | | (_| | | | | (_| | | | | | | (_| | | | |
+        |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                            __/ |                      
+                           |____/                       
     ''')
     print('''
                    ALCATRAZ  __
