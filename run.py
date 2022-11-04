@@ -266,8 +266,8 @@ def hangman(letters, to_test):
                     if user_guess == letter:
                         to_test[x] = user_guess
                         correct_guess += 1
-                    print(to_test)
                     x += 1 
+                print(to_test)
                 if correct_guess > 0:
                     print('Correct answer!')
                 else:
