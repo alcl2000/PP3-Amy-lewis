@@ -280,6 +280,20 @@ def end_game(incorrect_guesses, letters):
         print(f'Congratulations!\nYour score is: {score}')
     else:
         print("Sorry! You weren't able to save the man")
+    print('Play again? \n Y. Play again N. End Game')
+    play_again = input('')
+    play_again = play_again.lower()
+    # Input validation 
+    is_valid = check_interger(play_again)
+    if is_valid is False:
+        if play_again == 'y':
+            main()
+        elif play_again == 'n':
+            pass
+        else:
+            print('Please enter either Y or N')
+    else:
+        print('Please only enter Y or N')
 
 
 def main():
