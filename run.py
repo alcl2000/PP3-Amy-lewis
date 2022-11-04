@@ -216,31 +216,6 @@ def display_word(secret_word):
     hangman(letters, to_test)
 
 
-def hangman_old(letters, to_test):
-    correct_guesses = 1
-    incorrect_guesses = 6
-    while correct_guesses <= len(letters):
-        while incorrect_guesses >= 0:
-            guess = input('Choose a letter:')
-            is_letter = check_interger(guess)
-            print(letters)
-            print(HANGMAN_PICS[incorrect_guesses])
-            print(to_test)
-            if is_letter is False:
-                check_letters = check_letter(guess, letters)
-                if check_letters is True:
-                    print('Correct!')
-                    correct_guesses += 1
-                    print(correct_guesses)
-                else:
-                    print('Incorrect answer, please try again')
-                    incorrect_guesses -= 1
-                    print(f'Remaining guesses:{(incorrect_guesses+1)}')
-            else:
-                print('Please enter a Valid letter')
-        end_game(incorrect_guesses, letters)
-
-
 def hangman(letters, to_test):
     """
     Main game loop
@@ -279,48 +254,6 @@ def hangman(letters, to_test):
         else:
             print('Please enter a valid letter')
     end_game(incorrect_guesses, letters)
-
-
-def check_letter_old(guess, letters):
-    """
-    Function to check all of the letters in the word array
-    before printing or returning the result to the user
-    """
-    correct_letters = [] 
-    for letter in letters:
-        if guess in already_guessed:
-            print('Letter already guessed! Please enter a different one')
-            break
-        else:
-            already_guessed.append(guess)
-            print(already_guessed)
-            for letter in letters:
-                if guess in letters:
-                    correct_letters.append(guess)
-            if len(correct_letters) > 0:
-                return True
-            else:
-                return False
-
-
-def check_letter(guess, letters):
-    """
-    Function to check all the letters in the word array 
-    Returns the result to main hangman loop
-    Also checks if a letter has previously been entered to prevent re-entry
-    """
-    correct_letters = []
-    for letter in letters:
-        if guess in already_guessed:
-            print('Letter already guessed! Please enter a different one')
-            break
-        else:
-            already_guessed.append(guess)
-            print(already_guessed)
-            for letter in letters:
-                if guess in letters:
-                    correct_letters.append(guess)
-                    return correct_letters
 
 
 def reveal_word(correct_guess, to_test, letters):
