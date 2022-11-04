@@ -24,3 +24,5 @@ The secret word is being split into a list, however the input is not being match
 ### No way to handle duplicate letters in words
 
 ### Game not automatically ending on a correct answer
+
+- handled by iterating through to_test, and testing if _ remained
