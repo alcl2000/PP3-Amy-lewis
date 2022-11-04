@@ -256,12 +256,6 @@ def hangman(letters, to_test):
     end_game(incorrect_guesses, letters)
 
 
-def reveal_word(correct_guess, to_test, letters):
-    """
-    function to reveal letters as user guesses them correctly
-    """
-    
-
 def end_game(incorrect_guesses, letters):
     """
     ends the game and displays the user's score
