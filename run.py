@@ -55,6 +55,17 @@ HANGMAN_PICS = ['''
     ====
 ''']
 
+TITLE = """
+ _                                             
+| |                                            
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |                      
+                   |___/                       
+    """
+
 # Columns/Word selection
 easy_values = OPTIONS.col_values(1)
 medium_values = OPTIONS.col_values(2)
@@ -93,16 +104,7 @@ def start_game():
     Checks if the user enters an interger, else raises an error
     If valid number entered, lets user pick game or rules
     """
-    print(''' 
-        _                                             
-        | |                                            
-        | |__   __ _ _ __   __ _ _ __ ___   __ _ _ __  
-        | '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \ 
-        | | | | (_| | | | | (_| | | | | | | (_| | | | |
-        |_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
-                            __/ |                      
-                           |____/                       
-    ''')
+    print(TITLE)
     print('''
                    ALCATRAZ  __
                     PRISON  /__\             
@@ -136,10 +138,7 @@ def display_rules():
     """
     will display the rules for the player when this option is selected
     """
-    print(''' 
-    /_ /  /\   /\  / /```     /\ /\   /\   /\  / 
-   /  /  /--\ /  \/ /__``/   /  |  \ /--\ /  \/
-    ''')
+    print(TITLE)
     print('''
     This a game of hangman
     1. From the main menu select "Play Game" by pressing 1
@@ -158,9 +157,9 @@ def display_rules():
     1. Return home''')
     x = input('')
     if check_interger(x) is True:
-        start_game()
+        main()
     else:
-        start_game()
+        main()
 
 
 def choose_difficulty():
@@ -261,8 +260,8 @@ def hangman(letters, to_test):
                     print('Correct answer!')
                 else:
                     incorrect_guesses -= 1
-                    print(f'Incorrect answer, please try again\
-                        You have: {(incorrect_guesses)} guesses remaining')
+                    print('Incorrect answer, please try again')
+                    print(f'You have: {(incorrect_guesses)} guesses remaining')
             else:
                 print('Letter already guessed\n Please try again!')
         else:
@@ -275,6 +274,7 @@ def end_game(incorrect_guesses, letters):
     ends the game and displays the user's score
     """
     score = incorrect_guesses * len(letters)
+    print(TITLE)
     print('Game Over!!')
     if score > 0:
         print(f'Congratulations!\nYour score is: {score}')
