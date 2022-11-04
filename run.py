@@ -300,6 +300,11 @@ def main():
     """
     main function calls
     """
+    # Clears all lists when user plays again
+    letters = []
+    to_test = []
+    already_guessed = []
+    position_of_letter = []
     run_game = start_game()
     if run_game is True:
         difficulty = choose_difficulty()
