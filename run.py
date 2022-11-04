@@ -264,10 +264,11 @@ def hangman(letters, to_test):
                 ind = 0
                 for ind in to_test and letters:
                     if user_guess == letters[int(ind)]:
-                        print(letters[int(ind)])
+                        print(user_guess)
                         correct_guess += 1
                     else:
                         print(to_test[int(ind)])
+                    ind += 1
                 if correct_guess > 0:
                     print('Correct answer!')
                 else:
