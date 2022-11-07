@@ -6,17 +6,15 @@ This project is a simple hangman game created in python
 
 ## Contents
 
-- [Wireframes](#Wireframes)
+- [Flowcharts](#Flowcharts)
 - [User Experience](#User-Experience)
     -[User Interface](#user-interface)
 - [Project Goals](#project-goals)
 
-## Wireframes
-    <details open>
-    <summary>Flowcharts</summary>
-    ![The top half of a flowchart showing the beginning actions of starting the hangman game](assets/readme/flowchart-1)<br>
-    ![The bottom half of a flowcchart showing the ending actions of the hangman game](assets/readme/flowchart-2.jpg)
-    </details>
+## FlowCharts
+![The top half of a flowchart showing the beginning actions of starting the hangman game](assets/readme/flowchart-1.jpg)<br>
+![The bottom half of a flowcchart showing the ending actions of the hangman game](assets/readme/flowchart-2.jpg)
+
 
 ## User Experience
 
@@ -32,6 +30,10 @@ This project is a simple hangman game created in python
 
 - As the site owner I want the user to have a fun experience.
 - As the site owner I want the game to be functional with no bugs or errors.
+
+## Features
+
+
 
 ## Bug Fixes
 
