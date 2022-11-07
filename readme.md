@@ -33,7 +33,17 @@ This project is a simple hangman game created in python
 
 ## Features
 
+### ASCII art 
 
+- The game feautures various peices of ASCII art throughout
+
+- The opening page has A picture of Alcatraz prison which sets the users up for the game they're going to play 
+
+- The hangman art iterates on an incorrect answer, providing clear feedback to users on how their guesses are being scored
+
+### Entry Page
+
+- The entry page 
 
 ## Bug Fixes
 
