@@ -72,13 +72,15 @@ medium_values = OPTIONS.col_values(2)
 hard_values = OPTIONS.col_values(3)
 
 # Leaderboard values
-top_three = LEADERBOARD.col_values(1)
-first_place = LEADERBOARD.row_values(1)
-second_place = LEADERBOARD.row_values(2)
-third_place = LEADERBOARD.row_values(3)
+top_three_scores = LEADERBOARD.col_values(1)
+first_place = LEADERBOARD.acell('B1').value
+second_place = LEADERBOARD.acell('B2').value
+third_place = LEADERBOARD.acell('B3').value
+first_score = LEADERBOARD.acell('A1').value
+second_score = LEADERBOARD.acell('A2').value
+third_score = LEADERBOARD.acell('A3').value
 
 # Universal for gameplay
-already_guessed = []
 position_of_letter = []
 
 
@@ -113,7 +115,7 @@ def start_game():
             aaA@@@@@@@@@@@@@@@@@@@aaaA     
             A@@@@@@@@@@@DWB@@@@@@@@@@@@A    
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ''')
-    print('1. Start game 2. See rules\n 3. See leaderboard 4.Exit Game')
+    print('1. Start game 2. See rules\n3. See leaderboard 4.Exit Game')
     number = input('')
     interger = check_interger(number)
     if interger is True:
@@ -207,7 +209,7 @@ def pick_word(difficulty):
     """
     takes the value of choose_difficulty to select the word for hangman
     """
-    choice = random.randrange(11)
+    choice = random.randrange(25)
     if difficulty == 1:
         secret_word = easy_values[choice]
     elif difficulty == 2:
@@ -224,6 +226,7 @@ def display_word(secret_word):
     # Clears all lists when user plays again
     letters = []
     to_test = [] 
+    
     for letter in range(len(secret_word)):
         letters.append(secret_word[letter])
     for letter in letters:
@@ -241,6 +244,7 @@ def hangman(letters, to_test):
     Reveals the secret word when guessed
     """ 
     incorrect_guesses = 7
+    already_guessed = []
 
     while '_' in to_test and incorrect_guesses > 0:
         user_guess = input('Choose a letter: ')   
@@ -299,6 +303,20 @@ def end_game(incorrect_guesses, letters):
     else:
         print('Please only enter Y or N')
 
+def show_leaderboard(score):
+    """
+    Shows the top three scores
+    Allows user to add their name to the leaderboard if they scored high enough
+    """
+    print(TITLE)
+    if score > 0: 
+        print(f'Your score is: {score}')
+    print(f'''
+                    Leaderboard:
+                    1.{first_place}.{first_score}
+                    2.{second_place}.{second_score}
+                    3.{third_place}.{third_score}
+        ''')
 
 def main():
     """
@@ -313,4 +331,5 @@ def main():
         display_rules()
 
 
-main()
+# main()
+show_leaderboard(0)
