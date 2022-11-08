@@ -51,7 +51,14 @@ This project is a simple hangman game created in python
 
 The secret word is being split into a list, however the input is not being matched up to the correspinding letter in the list.
 
-### No way to handle duplicate letters in words
+### Letters from previous games not being erased on new game iteration
+
+This error was due to the lists containing guesses and the secret word being defined before the intitial game loop, so they are never cleared to allow the player to add new guesses
+
+This error was easily fixed by moving the list assignmnets into the game loop
+
+![A screenshot showing the array of letters to be guessed extended with old letters](assets/readme/answer-errors.jpeg)
+![A screenshot showing the moved lines of code with the lists moved to the game loop](assets/readme/answer-errors-fix.jpg)
 
 ### Game not automatically ending on a correct answer
 
