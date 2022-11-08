@@ -78,8 +78,6 @@ second_place = LEADERBOARD.row_values(2)
 third_place = LEADERBOARD.row_values(3)
 
 # Universal for gameplay
-letters = []
-to_test = []
 already_guessed = []
 position_of_letter = []
 
@@ -87,7 +85,7 @@ position_of_letter = []
 def check_interger(x):
     """
     checks if the user input is or isn't an interger and returns t/f values 
-    dependant on that 
+    dependant on that
     """
     if len(x) == 1:
         try:
@@ -115,7 +113,7 @@ def start_game():
             aaA@@@@@@@@@@@@@@@@@@@aaaA     
             A@@@@@@@@@@@DWB@@@@@@@@@@@@A    
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ''')
-    print('1. Start game 2. See rules 3. See leaderboard')
+    print('1. Start game 2. See rules\n 3. See leaderboard 4.Exit Game')
     number = input('')
     interger = check_interger(number)
     if interger is True:
@@ -128,6 +126,9 @@ def start_game():
             return False
         elif number == 3:
             print('Displaying leaderboard...')
+        elif number == 4:
+            print('Exiting Game')
+            exit()
         else:
             print('Please pick a valid number')
     else:
@@ -220,6 +221,9 @@ def display_word(secret_word):
     """
     breaks the selected word down into a list to then be used in hangman
     """
+    # Clears all lists when user plays again
+    letters = []
+    to_test = [] 
     for letter in range(len(secret_word)):
         letters.append(secret_word[letter])
     for letter in letters:
@@ -236,8 +240,8 @@ def hangman(letters, to_test):
     Tests user responses against the secret word
     Reveals the secret word when guessed
     """ 
-    incorrect_guesses = 7      
-   
+    incorrect_guesses = 7
+
     while '_' in to_test and incorrect_guesses > 0:
         user_guess = input('Choose a letter: ')   
         is_letter = check_interger(user_guess)
@@ -299,12 +303,7 @@ def end_game(incorrect_guesses, letters):
 def main():
     """
     main function calls
-    """
-    # Clears all lists when user plays again
-    letters = []
-    to_test = []
-    already_guessed = []
-    position_of_letter = []
+    """   
     run_game = start_game()
     if run_game is True:
         difficulty = choose_difficulty()
