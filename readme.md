@@ -41,9 +41,27 @@ This project is a simple hangman game created in python
 
 - The hangman art iterates on an incorrect answer, providing clear feedback to users on how their guesses are being scored
 
+### Leaderboard
+
+- The leaderboard shows the title, and the top three scores, if the users' score is higher than the others, it replaces them.
+
+### Rules page
+
+- The page is accessed from the main menu, and shows the rules for the game in an easy to read way for the users
+
 ### Entry Page
 
-- The entry page 
+- The entry page is the 'main hub' for the game, it allows the user to branch out
+
+### Difficulty selector
+
+- This page allows the user to pick from three different difficulty levels, each of which accesses a different list of words for the user to guess.
+
+### Main game page
+
+- This page is the main display for the game loop. It prints out the array for the hidden word and the hangman picture. 
+
+- The secret word list changes on input, and the display generates a list of letters that have already been tested 
 
 ## Bug Fixes
 
@@ -57,7 +75,7 @@ This error was due to the lists containing guesses and the secret word being def
 
 This error was easily fixed by moving the list assignmnets into the game loop
 
-![A screenshot showing the array of letters to be guessed extended with old letters](assets/readme/answer-errors.jpeg)
+![A screenshot showing the array of letters to be guessed extended with old letters](assets/readme/answer-errors.jpg)
 ![A screenshot showing the moved lines of code with the lists moved to the game loop](assets/readme/answer-errors-fix.jpg)
 
 ### Game not automatically ending on a correct answer
