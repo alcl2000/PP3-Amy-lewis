@@ -81,3 +81,27 @@ This error was easily fixed by moving the list assignmnets into the game loop
 ### Game not automatically ending on a correct answer
 
 - handled by iterating through to_test, and testing if _ remained
+
+## Technology used
+
+### Languages
+
+- This project was developed using the CI python template which already has HTML, CSS and JavaScript developed
+
+- I added all Python
+
+#### Python Frameworks
+
+-  Gspread
+- Oauth2
+- Random
+
+### Other technologies
+
+ - [Flowcharts from Diagrams.net](https://app.diagrams.net/)
+ - Google sheets
+ - Google APIs
+ - GitHub 
+ - Git version control
+ - Am I responsive 
+ - GitPod for development
