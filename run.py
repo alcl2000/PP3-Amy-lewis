@@ -309,8 +309,6 @@ def show_leaderboard(score):
     Shows the top three scores
     Allows user to add their name to the leaderboard if they scored high enough
     """
-    print(first_score)
-    print(type(first_score))
     print(TITLE)
     print(f'''
                 Leaderboard:
@@ -318,12 +316,14 @@ def show_leaderboard(score):
                 2. {second_place} . {second_score}
                 3. {third_place} . {third_score}
     ''')
-    if score > 0: 
+    if score > int(third_score): 
         print(f'Your score is: {score}') 
         print('Would you like to add your score to the leaderboard?')
         y_n = input('Y. Yes N. No\n')
         if y_n == 'y':
             add_to_leaderboard(score)
+        else:
+            main()
 
 
 def add_to_leaderboard(score):
@@ -332,6 +332,7 @@ def add_to_leaderboard(score):
     and allows them to add their name to the sheets
     """
     name = input('What is your name?:')
+    name = name.upper()
     if len(name) == 3:
         if score > int(first_score):
             LEADERBOARD.update('A1', score)
