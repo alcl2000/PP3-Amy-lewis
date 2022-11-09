@@ -303,6 +303,7 @@ def end_game(incorrect_guesses, letters):
     else:
         print('Please only enter Y or N')
 
+
 def show_leaderboard(score):
     """
     Shows the top three scores
@@ -323,9 +324,13 @@ def show_leaderboard(score):
         y_n = input('Y. Yes N. No\n')
         if y_n == 'y':
             add_to_leaderboard(score)
-                        
-        
+
+
 def add_to_leaderboard(score):
+    """
+    Checks which specific score the user has beaten 
+    and allows them to add their name to the sheets
+    """
     name = input('What is your name?:')
     if len(name) == 3:
         if score > int(first_score):
