@@ -308,15 +308,39 @@ def show_leaderboard(score):
     Shows the top three scores
     Allows user to add their name to the leaderboard if they scored high enough
     """
+    print(first_score)
+    print(type(first_score))
     print(TITLE)
-    if score > 0: 
-        print(f'Your score is: {score}')
     print(f'''
-                    Leaderboard:
-                    1.{first_place}.{first_score}
-                    2.{second_place}.{second_score}
-                    3.{third_place}.{third_score}
-        ''')
+                Leaderboard:
+                1. {first_place} . {first_score}
+                2. {second_place} . {second_score}
+                3. {third_place} . {third_score}
+    ''')
+    if score > 0: 
+        print(f'Your score is: {score}') 
+        print('Would you like to add your score to the leaderboard?')
+        y_n = input('Y. Yes N. No\n')
+        if y_n == 'y':
+            add_to_leaderboard(score)
+                        
+        
+def add_to_leaderboard(score):
+    name = input('What is your name?:')
+    if len(name) == 3:
+        if score > int(first_score):
+            LEADERBOARD.update('A1', score)
+            LEADERBOARD.update('B1', name)
+        elif score > second_score:
+            LEADERBOARD.update('A2', score)
+            LEADERBOARD.update('B2', name)
+        elif score > int(third_score):
+            LEADERBOARD.update('A3', score)
+            LEADERBOARD.update('B3', name)
+        else:
+            print('Sorry your score is not high enough to go on the leader board')
+    else:
+        print('Name must be 3 chars long')
 
 def main():
     """
@@ -332,4 +356,4 @@ def main():
 
 
 # main()
-show_leaderboard(0)
+show_leaderboard(10)
