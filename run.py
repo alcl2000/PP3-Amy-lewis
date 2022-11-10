@@ -307,7 +307,7 @@ def show_leaderboard(score):
     Shows the top three scores
     Allows user to add their name to the leaderboard if they scored high enough
     """
-        # Leaderboard values
+    # Leaderboard values
     first_place = LEADERBOARD.acell('B1').value
     second_place = LEADERBOARD.acell('B2').value
     third_place = LEADERBOARD.acell('B3').value
@@ -315,7 +315,7 @@ def show_leaderboard(score):
     second_score = LEADERBOARD.acell('A2').value
     third_score = LEADERBOARD.acell('A3').value
 
-    LEADERBOARD_GRAPHIC = f'''
+    leaderboard_graphic = f'''
                     Leaderboard:
                     1. {first_place} . {first_score}
                     2. {second_place} . {second_score}
@@ -323,7 +323,7 @@ def show_leaderboard(score):
         '''
 
     print(TITLE)
-    print(LEADERBOARD_GRAPHIC)
+    print(leaderboard_graphic)
     if score > int(third_score): 
         print(f'Your score is: {score}') 
         print('Would you like to add your score to the leaderboard?')
@@ -336,7 +336,7 @@ def show_leaderboard(score):
     if main_menu == 'y':
         main()
     else:
-        print(LEADERBOARD_GRAPHIC)
+        print(leaderboard_graphic)
 
 
 def add_to_leaderboard(score, first_score, second_score, third_score):
@@ -373,5 +373,4 @@ def main():
         display_rules()
 
 
-# main()
-show_leaderboard(28)
+main()
