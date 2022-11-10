@@ -66,26 +66,11 @@ TITLE = """
                    |___/                       
     """
 
+
 # Columns/Word selection
 easy_values = OPTIONS.col_values(1)
 medium_values = OPTIONS.col_values(2)
 hard_values = OPTIONS.col_values(3)
-
-# Leaderboard values
-top_three_scores = LEADERBOARD.col_values(1)
-first_place = LEADERBOARD.acell('B1').value
-second_place = LEADERBOARD.acell('B2').value
-third_place = LEADERBOARD.acell('B3').value
-first_score = LEADERBOARD.acell('A1').value
-second_score = LEADERBOARD.acell('A2').value
-third_score = LEADERBOARD.acell('A3').value
-
-LEADERBOARD_GRAPHIC = f'''
-                Leaderboard:
-                1. {first_place} . {first_score}
-                2. {second_place} . {second_score}
-                3. {third_place} . {third_score}
-    '''
 
 # Universal for gameplay
 position_of_letter = []
@@ -322,6 +307,21 @@ def show_leaderboard(score):
     Shows the top three scores
     Allows user to add their name to the leaderboard if they scored high enough
     """
+        # Leaderboard values
+    first_place = LEADERBOARD.acell('B1').value
+    second_place = LEADERBOARD.acell('B2').value
+    third_place = LEADERBOARD.acell('B3').value
+    first_score = LEADERBOARD.acell('A1').value
+    second_score = LEADERBOARD.acell('A2').value
+    third_score = LEADERBOARD.acell('A3').value
+
+    LEADERBOARD_GRAPHIC = f'''
+                    Leaderboard:
+                    1. {first_place} . {first_score}
+                    2. {second_place} . {second_score}
+                    3. {third_place} . {third_score}
+        '''
+
     print(TITLE)
     print(LEADERBOARD_GRAPHIC)
     if score > int(third_score): 
@@ -329,7 +329,7 @@ def show_leaderboard(score):
         print('Would you like to add your score to the leaderboard?')
         y_n = input('Y. Yes N. No\n')
         if y_n == 'y':
-            add_to_leaderboard(score)
+            add_to_leaderboard(score, first_score, second_score, third_score)
         else:
             main()
     main_menu = input('Return home?\n Y. yes N. no\n')
@@ -339,7 +339,7 @@ def show_leaderboard(score):
         print(LEADERBOARD_GRAPHIC)
 
 
-def add_to_leaderboard(score):
+def add_to_leaderboard(score, first_score, second_score, third_score):
     """
     Checks which specific score the user has beaten 
     and allows them to add their name to the sheets
@@ -347,15 +347,12 @@ def add_to_leaderboard(score):
     name = input('What is your name?:')
     name = name.upper()
     if len(name) == 3:
-        if score > int(first_score):
-            LEADERBOARD.update('A1', score)
-            LEADERBOARD.update('B1', name)
-        elif score > second_score:
-            LEADERBOARD.update('A2', score)
-            LEADERBOARD.update('B2', name)
-        elif score > int(third_score):
-            LEADERBOARD.update('A3', score)
-            LEADERBOARD.update('B3', name)
+        if score >= int(first_score):
+            LEADERBOARD.insert_row([score, name], index = 1)
+        elif score >= int(second_score):
+            LEADERBOARD.insert_row([score, name], index = 2)
+        elif score >= int(third_score):
+            LEADERBOARD.insert_row([score, name], index = 3)
         else:
             print('Sorry your score is not high enough to go on the leader board')
     else:
@@ -376,4 +373,5 @@ def main():
         display_rules()
 
 
-main()
+# main()
+show_leaderboard(28)
