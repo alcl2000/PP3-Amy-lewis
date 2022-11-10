@@ -82,6 +82,11 @@ This error was easily fixed by moving the list assignmnets into the game loop
 
 - handled by iterating through to_test, and testing if _ remained
 
+
+## Testing
+
+[Testing document here](testing.md)
+
 ## Technology used
 
 ### Languages
@@ -105,3 +110,8 @@ This error was easily fixed by moving the list assignmnets into the game loop
  - Git version control
  - Am I responsive 
  - GitPod for development
+ - Heroku 
+
+ ## Development
+ 
+ Cloning, Forking and Deployment
