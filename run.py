@@ -297,6 +297,8 @@ def end_game(incorrect_guesses, letters):
     print('Game Over!!')
     if score > 0:
         print(f'Congratulations!\nYour score is: {score}')
+        print('Going to leaderboard...')
+        show_leaderboard(score)
     else:
         print("Sorry! You weren't able to save the man")
     print('Play again? \n Y. Play again N. End Game')
