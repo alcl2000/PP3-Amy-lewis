@@ -122,7 +122,10 @@ def start_game():
             aaA@@@@@@@@@@@@@@@@@@@aaaA     
             A@@@@@@@@@@@DWB@@@@@@@@@@@@A    
             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ''')
-    print('1. Start game 2. See rules\n3. See leaderboard 4.Exit Game')
+    print('''
+           1. Start game 2. See rules
+         3. See leaderboard 4.Exit Game
+        ''')
     number = input('')
     interger = check_interger(number)
     if interger is True:
@@ -137,7 +140,7 @@ def start_game():
             print('Displaying leaderboard...')
             show_leaderboard(0)
         elif number == 4:
-            print('Exiting Game')
+            print('Exiting Game...')
             exit()
         else:
             print('Please pick a valid number')
