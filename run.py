@@ -80,6 +80,13 @@ first_score = LEADERBOARD.acell('A1').value
 second_score = LEADERBOARD.acell('A2').value
 third_score = LEADERBOARD.acell('A3').value
 
+LEADERBOARD_GRAPHIC = f'''
+                Leaderboard:
+                1. {first_place} . {first_score}
+                2. {second_place} . {second_score}
+                3. {third_place} . {third_score}
+    '''
+
 # Universal for gameplay
 position_of_letter = []
 
@@ -128,6 +135,7 @@ def start_game():
             return False
         elif number == 3:
             print('Displaying leaderboard...')
+            show_leaderboard(0)
         elif number == 4:
             print('Exiting Game')
             exit()
@@ -310,12 +318,7 @@ def show_leaderboard(score):
     Allows user to add their name to the leaderboard if they scored high enough
     """
     print(TITLE)
-    print(f'''
-                Leaderboard:
-                1. {first_place} . {first_score}
-                2. {second_place} . {second_score}
-                3. {third_place} . {third_score}
-    ''')
+    print(LEADERBOARD_GRAPHIC)
     if score > int(third_score): 
         print(f'Your score is: {score}') 
         print('Would you like to add your score to the leaderboard?')
@@ -324,6 +327,11 @@ def show_leaderboard(score):
             add_to_leaderboard(score)
         else:
             main()
+    main_menu = input('Return home?\n Y. yes N. no\n')
+    if main_menu == 'y':
+        main()
+    else:
+        print(LEADERBOARD_GRAPHIC)
 
 
 def add_to_leaderboard(score):
@@ -347,6 +355,8 @@ def add_to_leaderboard(score):
             print('Sorry your score is not high enough to go on the leader board')
     else:
         print('Name must be 3 chars long')
+    show_leaderboard(0)
+
 
 def main():
     """
@@ -361,5 +371,4 @@ def main():
         display_rules()
 
 
-# main()
-show_leaderboard(10)
+main()
