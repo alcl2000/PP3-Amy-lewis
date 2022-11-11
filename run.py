@@ -142,13 +142,13 @@ def start_game():
         number = int(number)
         if number == 1:
             print('Starting game...')
-            return True
+            return 1
         elif number == 2:
             print('Displaying rules...')
-            return False
+            return 2
         elif number == 3:
             print('Displaying leaderboard...')
-            show_leaderboard(0)
+            return 3
         elif number == 4:
             print('Exiting Game...')
             exit()
@@ -406,12 +406,14 @@ def main():
     main function calls
     """   
     run_game = start_game()
-    if run_game is True:
+    if run_game == 1:
         difficulty = choose_difficulty()
         secret_word = pick_word(difficulty)
         display_word(secret_word)
-    else:
+    elif run_game == 2:
         display_rules()
+    elif run_game == 3:
+        show_leaderboard(0)
 
 
 main()
