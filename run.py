@@ -91,6 +91,14 @@ def check_interger(x):
         return None
 
 
+def check_input(x):
+    """
+    A refactored version of check interger 
+    Handles input length and type
+    returns the type of the input to be handled within each function
+    """
+
+
 def start_game():
     """
     Checks if the user enters an interger, else raises an error
@@ -347,8 +355,10 @@ def show_leaderboard(score):
         elif main_menu == 2:
             show_leaderboard(0)
         else:
+            print(f'Error: input {main_menu} is invalid')
             print('Please only enter 1 or 2')
     else:
+        print(f'Error: input {main_menu} is invalid')
         print('Please enter a valid number')
 
 
