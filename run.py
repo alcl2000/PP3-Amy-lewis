@@ -16,6 +16,10 @@ SHEET = GSPREAD_CLIENT.open('hang-man-choices')
 OPTIONS = SHEET.worksheet('options')
 LEADERBOARD = SHEET.worksheet('leaderboard')
 
+# Validation 
+invalid_chars = ['!"£$%^&*()#~']
+english_alphabet = ['abcdefghijklmnopqrstuvwxyz']
+
 # ACSII ART
 HANGMAN_PICS = ['''
      +---+
@@ -97,6 +101,19 @@ def check_input(x):
     Handles input length and type
     returns the type of the input to be handled within each function
     """
+    if len(x) == 1:
+        if x in invalid_chars:
+            return 'Error, do not enter special characters'
+        elif x not in english_alphabet:
+            return 'Error, English characters only'
+        else:
+            try:
+                int(x)
+                return 'Number'
+            except ValueError:
+                return 'Letter'
+    else:
+        return 'Error, only one character should be entered'
 
 
 def start_game():
@@ -120,8 +137,8 @@ def start_game():
          3. See leaderboard 4.Exit Game
         ''')
     number = input('')
-    interger = check_interger(number)
-    if interger is True:
+    interger = check_input(number)
+    if interger == 'Number':
         number = int(number)
         if number == 1:
             print('Starting game...')
@@ -138,7 +155,7 @@ def start_game():
         else:
             print('Please pick a valid number')
     else:
-        print('Please enter a number')
+        print(interger)
 
 
 def display_rules():
