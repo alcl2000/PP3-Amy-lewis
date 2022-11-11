@@ -109,9 +109,9 @@ def check_input(x):
         else:
             try:
                 int(x)
-                return 'Number'
+                return 1
             except ValueError:
-                return 'Letter'
+                return 2
     else:
         return 'Error, only one character should be entered'
 
@@ -137,25 +137,26 @@ def start_game():
          3. See leaderboard 4.Exit Game
         ''')
     number = input('')
-    interger = check_input(number)
-    if interger == 'Number':
+    interger = check_interger(number)
+    if interger is True:
         number = int(number)
         if number == 1:
             print('Starting game...')
             return 1
-        elif number == 2:
+        if number == 2:
             print('Displaying rules...')
             return 2
-        elif number == 3:
+        if number == 3:
             print('Displaying leaderboard...')
             return 3
-        elif number == 4:
+        if number == 4:
             print('Exiting Game...')
             exit()
         else:
-            print('Please pick a valid number')
+            print('Please only enter 1, 2, 3, or 4')
     else:
-        print(interger)
+        print('Please enter a number')
+        main()
 
 
 def display_rules():
