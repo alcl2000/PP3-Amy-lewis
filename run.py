@@ -1,6 +1,6 @@
+import random 
 import gspread
 from google.oauth2.service_account import Credentials
-import random
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -149,16 +149,21 @@ def display_rules():
     5. If your answer is correct, it will be displayed in the secret word
     6. If your answer is incorrect, a line will be added to the hangman
     7. You only get 6 incorrect guesses - so be careful!''')
-    print('''
-    If you win, you can add your score to the leader board!
-    ''')
-    print('''
-    1. Return home''')
+    print('If you win, you can add your score to the leader board!')
+    print('1. Return home 2. End game')
     x = input('')
     if check_interger(x) is True:
-        main()
+        x = int(x)
+        if x == 1:
+            main()
+        elif x == 2:
+            exit()
+        else:
+            print('Please only enter 1 or 2')
+            display_rules()
     else:
-        main()
+        print('Please enter a valid number')
+        display_rules()
 
 
 def choose_difficulty():
@@ -348,13 +353,14 @@ def add_to_leaderboard(score, first_score, second_score, third_score):
     name = name.upper()
     if len(name) == 3:
         if score >= int(first_score):
-            LEADERBOARD.insert_row([score, name], index = 1)
+            LEADERBOARD.insert_row([score, name], index=1)
         elif score >= int(second_score):
-            LEADERBOARD.insert_row([score, name], index = 2)
+            LEADERBOARD.insert_row([score, name], index=2)
         elif score >= int(third_score):
-            LEADERBOARD.insert_row([score, name], index = 3)
+            LEADERBOARD.insert_row([score, name], index=3)
         else:
-            print('Sorry your score is not high enough to go on the leader board')
+            print('Sorry!')
+            print('Your score is not high enough to go on the leader board')
     else:
         print('Name must be 3 chars long')
     show_leaderboard(0)
