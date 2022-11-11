@@ -16,9 +16,8 @@ SHEET = GSPREAD_CLIENT.open('hang-man-choices')
 OPTIONS = SHEET.worksheet('options')
 LEADERBOARD = SHEET.worksheet('leaderboard')
 
-# Validation 
-invalid_chars = ['!"£$%^&*()#~']
-english_alphabet = ['abcdefghijklmnopqrstuvwxyz']
+# Validation
+english_alphabet = ['a b c d e f g h i j k l m n o p q r s t u v w x y z']
 
 # ACSII ART
 HANGMAN_PICS = ['''
@@ -83,7 +82,7 @@ position_of_letter = []
 def check_interger(x):
     """
     checks if the user input is or isn't an interger and returns t/f values 
-    dependant on that
+    dependent on that
     """
     if len(x) == 1:
         try:
@@ -93,27 +92,6 @@ def check_interger(x):
             return False
     else:
         return None
-
-
-def check_input(x):
-    """
-    A refactored version of check interger 
-    Handles input length and type
-    returns the type of the input to be handled within each function
-    """
-    if len(x) == 1:
-        if x in invalid_chars:
-            return 'Error, do not enter special characters'
-        elif x not in english_alphabet:
-            return 'Error, English characters only'
-        else:
-            try:
-                int(x)
-                return 1
-            except ValueError:
-                return 2
-    else:
-        return 'Error, only one character should be entered'
 
 
 def start_game():
@@ -274,7 +252,7 @@ def hangman(letters, to_test):
     already_guessed = []
 
     while '_' in to_test and incorrect_guesses > 0:
-        user_guess = input('Choose a letter: ')   
+        user_guess = input('Choose a letter: ') 
         is_letter = check_interger(user_guess)
         print(letters)
         print(HANGMAN_PICS[(incorrect_guesses - 1)])
@@ -282,6 +260,7 @@ def hangman(letters, to_test):
         if is_letter is False:
             user_guess = user_guess.lower()
             if user_guess not in already_guessed:
+                # x value is used to iterate through blank list
                 x = 0
                 print(already_guessed)
                 already_guessed.append(user_guess)
@@ -289,7 +268,7 @@ def hangman(letters, to_test):
                     if user_guess == letter:
                         to_test[x] = user_guess
                         correct_guess += 1
-                    x += 1 
+                        x += 1 
                 print(to_test)
                 if correct_guess > 0:
                     print('Correct answer!')
@@ -371,13 +350,15 @@ def show_leaderboard(score):
         if main_menu == 1:
             main()
         elif main_menu == 2:
-            show_leaderboard(0)
+            exit()
         else:
             print(f'Error: input {main_menu} is invalid')
             print('Please only enter 1 or 2')
+            show_leaderboard(0)
     else:
         print(f'Error: input {main_menu} is invalid')
         print('Please enter a valid number')
+        show_leaderboard(0)
 
 
 def add_to_leaderboard(score, first_score, second_score, third_score):
