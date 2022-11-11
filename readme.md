@@ -82,6 +82,10 @@ This error was easily fixed by moving the list assignmnets into the game loop
 
 - handled by iterating through to_test, and testing if _ remained
 
+### Incorrect input on the rules page lead to program exiting unexpectedly 
+
+- The data entered on the rules page was not being correctly validated, while the user is asked for an interger, the data was being interpretted as a string
+- The string could not be used for validation and as such was always returning an error before exiting the program
 
 ## Testing
 
