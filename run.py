@@ -337,11 +337,19 @@ def show_leaderboard(score):
             add_to_leaderboard(score, first_score, second_score, third_score)
         else:
             main()
-    main_menu = input('Return home?\n Y. yes N. no\n')
-    if main_menu == 'y':
-        main()
+    print('1. Return Home 2. Exit Game')
+    main_menu = input('')
+    correct_value = check_interger(main_menu)
+    if correct_value is True:
+        main_menu = int(main_menu)
+        if main_menu == 1:
+            main()
+        elif main_menu == 2:
+            show_leaderboard(0)
+        else:
+            print('Please only enter 1 or 2')
     else:
-        print(leaderboard_graphic)
+        print('Please enter a valid number')
 
 
 def add_to_leaderboard(score, first_score, second_score, third_score):
