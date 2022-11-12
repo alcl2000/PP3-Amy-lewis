@@ -134,8 +134,8 @@ def start_game():
          3. See leaderboard 4.Exit Game
         ''')
     number = input('')
-    interger = check_interger(number)
-    if interger is True:
+    interger = check_input(number)
+    if interger == 1:
         number = int(number)
         if number == 1:
             print('Starting game...')
@@ -175,7 +175,7 @@ def display_rules():
     print('If you win, you can add your score to the leader board!')
     print('1. Return home 2. End game')
     x = input('')
-    if check_interger(x) is True:
+    if check_input(x) == 1:
         x = int(x)
         if x == 1:
             main()
@@ -209,24 +209,22 @@ def choose_difficulty():
     ================================
     ''')
     print('Select your difficulty\n 1. Easy 2. Medium 3. Hard')
-    while True:
-        mode = input('')
-        mode = int(mode)
-        try:
-            if mode == 1:
-                print('easy mode selected')
-                return 1
-            elif mode == 2:
-                print('medium mode selected')
-                return 2
-            elif mode == 3:
-                print('hard mode selected')
-                return 3
-            else:
-                print('Please select a difficulty ')
-        except ValueError:
-            print('Please enter a valid number')
-        break
+    mode = input('')
+    if check_input(mode) == 1:
+        if mode == 1:
+            print('easy mode selected')
+            return 1
+        elif mode == 2:
+            print('medium mode selected')
+            return 2
+        elif mode == 3:
+            print('hard mode selected')
+            return 3
+        else:
+            print('Please select a difficulty ')
+    else:
+        print('Please enter a valid number')
+        choose_difficulty()
 
 
 def pick_word(difficulty):
