@@ -17,7 +17,7 @@ OPTIONS = SHEET.worksheet('options')
 LEADERBOARD = SHEET.worksheet('leaderboard')
 
 # Validation
-english_alphabet = ['a b c d e f g h i j k l m n o p q r s t u v w x y z']
+english_alphabet = ['abcdefghijklmnopqrstuvwxyz']
 
 # ACSII ART
 HANGMAN_PICS = ['''
@@ -92,6 +92,25 @@ def check_interger(x):
             return False
     else:
         return None
+
+
+def check_input(x):
+    """
+    Refactored form of check_interger
+    Checks the type of input and returns data baseed on that
+    """
+    if len(x) == 1:
+        try:
+            int(x)
+            return 1
+        except ValueError:
+            is_alpha = x.isalpha()
+            if is_alpha is True:
+                return 2
+            else:
+                return 3
+    else:
+        return 3
 
 
 def start_game():
