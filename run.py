@@ -211,6 +211,7 @@ def choose_difficulty():
     print('Select your difficulty\n 1. Easy 2. Medium 3. Hard')
     mode = input('')
     if check_input(mode) == 1:
+        mode = int(mode)
         if mode == 1:
             print('easy mode selected')
             return 1
