@@ -271,11 +271,11 @@ def hangman(letters, to_test):
 
     while '_' in to_test and incorrect_guesses > 0:
         user_guess = input('Choose a letter: ') 
-        is_letter = check_interger(user_guess)
+        is_letter = check_input(user_guess)
         print(letters)
         print(HANGMAN_PICS[(incorrect_guesses - 1)])
         correct_guess = 0
-        if is_letter is False:
+        if is_letter == 2:
             user_guess = user_guess.lower()
             if user_guess not in already_guessed:
                 print(already_guessed)
@@ -297,7 +297,7 @@ def hangman(letters, to_test):
             else:
                 print('Letter already guessed\n Please try again!')
         else:
-            print('Please enter a valid letter')
+            print('Please only enter letters of the English alphabet')
     end_game(incorrect_guesses, letters)
 
 
