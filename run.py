@@ -278,15 +278,15 @@ def hangman(letters, to_test):
         if is_letter is False:
             user_guess = user_guess.lower()
             if user_guess not in already_guessed:
-                # x value is used to iterate through blank list
-                x = 0
                 print(already_guessed)
                 already_guessed.append(user_guess)
+                # x value is used to iterate through blank list
+                x = 0
                 for letter in letters:
                     if user_guess == letter:
                         to_test[x] = user_guess
                         correct_guess += 1
-                        x += 1 
+                    x += 1 
                 print(to_test)
                 if correct_guess > 0:
                     print('Correct answer!')
