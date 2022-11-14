@@ -47,3 +47,14 @@
 |Exit Game button| When '2' is entered the program exits| The program exits without issue when '2' is entered| Pass|
 |Input validation - Type| When the user doesn't enter a number, the program displays an error and then re-calls itself | When a letter or symbol is entered, an error is displayed and the function is re-called|Pass|
 | Input Validation - Value | When the user enters a number other than 1 or 2 an error is displayed and the function re-called | When an incorrect letter is entered, the program displays an error and re-calls itself|
+|Leader Board|
+|Function call- from home| When the '3' button is pressed on the home page the top three scores should be called with the names of the users |When the function is called from the home page the top three are printed correctly |Pass|
+|Function call - Game Win| When a user wins the game, their score is displayed and they are asked if they would like to add it to the board | The function is called correctly when the user wins the game |Pass|
+|Function call - Game Loss | If the user loses their game, a message is printed before showing the top three scores| The message and scoreboard are both printed correctly when the user loses a game| Pass|
+|Add score to leaderboard | On a game win, the program prints a message and gives the option to add to leaderboard with a name | When the user wins, they are able to enter their score, the leaderboard updates correctly and displays the new scores| Pass|
+| Return Home button| If '1' is entered the user is returned home | If '1' is entered the main menu is returned to correctly| Pass|
+|End Game button| If '2' is entered the program should end|If '2' is entered the program is exited | Pass|
+|Name Input Validation | If the string is longer than 3 an error should be returned and the function recalled | If the string is too long, the function returns an error and re-calls itself |Pass|
+|Input Validation - Data type| When the user enters a number on the screen, it check the data type and only allows the program to continue with a correct data type | The data is validated correctly and if a string is entered the program returns an error and re-calls |Pass|
+|Input Validation - Data Value | When the user enters a number other than 1 or 2 it returns an input error and re-calls itself | When an incorrect number is enters, the program returns an error and re-prints the leaderboard|
+
