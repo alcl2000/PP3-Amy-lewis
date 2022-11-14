@@ -79,21 +79,6 @@ hard_values = OPTIONS.col_values(3)
 position_of_letter = []
 
 
-def check_interger(x):
-    """
-    checks if the user input is or isn't an interger and returns t/f values 
-    dependent on that
-    """
-    if len(x) == 1:
-        try:
-            int(x)
-            return True
-        except ValueError:
-            return False
-    else:
-        return None
-
-
 def check_input(x):
     """
     Refactored form of check_interger
@@ -313,13 +298,14 @@ def end_game(incorrect_guesses, letters):
         print('Going to leaderboard...')
         show_leaderboard(score)
     else:
+        print(f'The word was {letters}')
         print("Sorry! You weren't able to save the man")
     print('Play again? \n Y. Play again N. End Game')
     play_again = input('')
     play_again = play_again.lower()
     # Input validation 
-    is_valid = check_interger(play_again)
-    if is_valid is False:
+    is_valid = check_input(play_again)
+    if is_valid == 2:
         if play_again == 'y':
             main()
         elif play_again == 'n':
@@ -345,9 +331,10 @@ def show_leaderboard(score):
 
     leaderboard_graphic = f'''
                     Leaderboard:
-                    1. {first_place} . {first_score}
-                    2. {second_place} . {second_score}
-                    3. {third_place} . {third_score}
+                    ============
+                    |1. {first_place} | {first_score} |
+                    |2. {second_place} | {second_score} |
+                    |3. {third_place} | {third_score} |
         '''
 
     print(TITLE)
@@ -362,8 +349,8 @@ def show_leaderboard(score):
             main()
     print('1. Return Home 2. Exit Game')
     main_menu = input('')
-    correct_value = check_interger(main_menu)
-    if correct_value is True:
+    correct_value = check_input(main_menu)
+    if correct_value == 1:
         main_menu = int(main_menu)
         if main_menu == 1:
             main()
