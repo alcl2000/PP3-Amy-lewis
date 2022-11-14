@@ -56,5 +56,5 @@
 |End Game button| If '2' is entered the program should end|If '2' is entered the program is exited | Pass|
 |Name Input Validation | If the string is longer than 3 an error should be returned and the function recalled | If the string is too long, the function returns an error and re-calls itself |Pass|
 |Input Validation - Data type| When the user enters a number on the screen, it check the data type and only allows the program to continue with a correct data type | The data is validated correctly and if a string is entered the program returns an error and re-calls |Pass|
-|Input Validation - Data Value | When the user enters a number other than 1 or 2 it returns an input error and re-calls itself | When an incorrect number is enters, the program returns an error and re-prints the leaderboard|
+|Input Validation - Data Value | When the user enters a number other than 1 or 2 it returns an input error and re-calls itself | When an incorrect number is enters, the program returns an error and re-prints the leaderboard| Pass|
 

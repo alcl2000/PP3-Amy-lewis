@@ -97,13 +97,18 @@ This error was easily fixed by moving the list assignmnets into the game loop
 
 - This project was developed using the CI python template which already has HTML, CSS and JavaScript developed
 
-- I added all Python
+- I added all Python code to the program
 
-#### Python Frameworks
+#### Python Frameworks Used
 
--  Gspread
-- Oauth2
+- Gspread
+    - This framework was used to allow for the word choices and the leaderboard to be updated and kept organised remotely
+    - The spreadsheets allow for different word choices to be kept in different columns and added to easily, while ensuring that the lists stay easy to read
+    - The spreadsheets allow for the leaderboard to be updated quickly and efficiently, while storing intergers and strings simultaneously
+- Oauth2 (Credentials)
+    - Used to access google APIs 
 - Random
+    - Used to pick a word from the spreadsheet at random
 
 ### Other technologies
 
