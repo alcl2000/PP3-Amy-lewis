@@ -257,7 +257,6 @@ def hangman(letters, to_test):
     while '_' in to_test and incorrect_guesses > 0:
         user_guess = input('Choose a letter: ') 
         is_letter = check_input(user_guess)
-        print(letters)
         print(HANGMAN_PICS[(incorrect_guesses - 1)])
         correct_guess = 0
         if is_letter == 2:
@@ -385,6 +384,7 @@ def add_to_leaderboard(score, first_score, second_score, third_score):
             print('Your score is not high enough to go on the leader board')
     else:
         print('Name must be 3 chars long')
+        add_to_leaderboard(score, first_score, second_score, third_score)
     show_leaderboard(0)
 
 
