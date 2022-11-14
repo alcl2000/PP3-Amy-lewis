@@ -41,3 +41,9 @@
 |Input Validation - Numbers/Symbols| When a number or symbol (or any key press that does not contain an English letter) is entered the program should return an error| when anything other than an English letter is entered, the program retuns an error| Pass|
 |Game end - Loss| When the user runs out of guesses, the program prints a message and redirects to the scoreboard| The message is printed and the user is redicted correctly|Pass|
 |Game end - Win| When all of the correct letters are entered, the message is printed and the user is redirected to the leaderboard page| The message is printed and the user redirected correctly when the list is full of correct letters| Pass|
+|Rules Page|
+|Page display and load | When the page loads the rules automatically display with the buttons below| When the rules option is selected the rules and buttons load correctly | Pass|
+|'Return Home' button | When '1' is entered the user is taken back to the home page| When the number one is entered the user is redirected home correctly| Pass|
+|Exit Game button| When '2' is entered the program exits| The program exits without issue when '2' is entered| Pass|
+|Input validation - Type| When the user doesn't enter a number, the program displays an error and then re-calls itself | When a letter or symbol is entered, an error is displayed and the function is re-called|Pass|
+| Input Validation - Value | When the user enters a number other than 1 or 2 an error is displayed and the function re-called | When an incorrect letter is entered, the program displays an error and re-calls itself|
