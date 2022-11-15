@@ -187,6 +187,15 @@ This project is a simple hangman game created in python
 
  ## Development
 
+ ### Creating a repository 
+
+ - Either create an account or log into GitHub.com
+ - From your profile click into the 'Repositories' section and select 'New' 
+ - From here give your repository a unique name and select the Code Institute Python Template
+ - Click the 'Create Repository Button at the bottom of the page
+
+ ### Forking
+
  ### Deployment
 
  This project was deployed to Heroku using the student pack 
