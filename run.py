@@ -170,6 +170,7 @@ def display_rules():
             print('Please only enter 1 or 2')
             display_rules()
     else:
+        print(f'Error: input {x} is invalid')
         print('Please enter a valid number')
         display_rules()
 
@@ -209,6 +210,7 @@ def choose_difficulty():
         else:
             print('Please select a difficulty ')
     else:
+        print(f'Error: input {mode} is invalid')
         print('Please enter a valid number')
         choose_difficulty()
 
@@ -281,6 +283,7 @@ def hangman(letters, to_test):
             else:
                 print('Letter already guessed\n Please try again!')
         else:
+            print(f'Error: input {user_guess} is invalid')
             print('Please only enter letters of the English alphabet')
     end_game(incorrect_guesses, letters)
 
@@ -312,6 +315,7 @@ def end_game(incorrect_guesses, letters):
         else:
             print('Please enter either Y or N')
     else:
+        print(f'Error: input {play_again} is invalid')
         print('Please only enter Y or N')
 
 
@@ -342,10 +346,19 @@ def show_leaderboard(score):
         print(f'Your score is: {score}') 
         print('Would you like to add your score to the leaderboard?')
         y_n = input('Y. Yes N. No\n')
-        if y_n == 'y':
-            add_to_leaderboard(score, first_score, second_score, third_score)
+        is_valid = check_input(y_n)
+        if is_valid == 2:
+            if y_n == 'y':
+                add_to_leaderboard(
+                    score, first_score, second_score, third_score
+                    )
+            elif y_n == 'n':
+                main()
+            else:
+                print('Please only enter Y or N')
         else:
-            main()
+            print(f'Error: input {y_n} is invalid')
+            print('Please only enter Y or N')
     print('1. Return Home 2. Exit Game')
     main_menu = input('')
     correct_value = check_input(main_menu)
