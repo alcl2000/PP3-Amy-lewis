@@ -196,6 +196,16 @@ This project is a simple hangman game created in python
 
  ### Forking
 
+ - From the repository page, locate the 'Fork' button at the top
+ - Click on the button, and the fork will be added to your repositories
+
+ ### Cloning
+
+ - From the top of the repository page
+ - Select the drop-down 'Code' and then pick the 'GitHub CLI' section
+ - From here copy the command presented
+ - Then paste and run this command in the gitbash section of your chosen IDE
+
  ### Deployment
 
  This project was deployed to Heroku using the student pack 
@@ -217,7 +227,7 @@ This project is a simple hangman game created in python
     - Select the desired repository and branch from your GitHub profile
     - Click to enable automatic deploys, to allow the app to remain up to date with all your commits
  
- Cloning, Forking 
+ ### Google Sheets API installation 
 
  ### Credits
 
