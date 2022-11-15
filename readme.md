@@ -64,21 +64,40 @@ This project is a simple hangman game created in python
 
 ### Rules page
 
+![The rules page with The rules written in an ordered numbered list with options to either return home or exit the program](assets/readme/rules-feat.jpg)
+
 - The page is accessed from the main menu, and shows the rules for the game in an easy to read way for the users
 
 ### Entry Page
 
+![The main entry page for the game with the title and ASCII art clearly displayed](assets/readme/title-page-features.jpg)
+
 - The entry page is the 'main hub' for the game, it allows the user to branch out
 
+### Entry buttons
+
+![The four 'buttons' showing users which options they may pick](assets/readme/title-buttons-feat.jpg)
+
+- There are four options at the bottom of the main page which act as buttons for the user
+- They may pick any options from 1 - 4
+
 ### Difficulty selector
+
+![A screenshot of the select difficulty page with ASCII art depicting a man in jail asking for help](assets/readme/pick-difficulty-feat.jpg)
 
 - This page allows the user to pick from three different difficulty levels, each of which accesses a different list of words for the user to guess.
 
 ### Main game page
 
+![A screenshot showing that 'Easy Mode' was selected, with a hangman displayed and a list of underscores underneath](assets/readme/main-game-loop.jpg)
+
 - This page is the main display for the game loop. It prints out the array for the hidden word and the hangman picture. 
 
+![A list showing the letters which had already been guessed by the user](assets/readme/already-guessed-feat.jpg)
+
 - The secret word list changes on input, and the display generates a list of letters that have already been tested 
+
+![A screenshot showing that the user inputted the incorrect answer](assets/readme/incorrect-feat.jpg)
 
 ## Bug Fixes
 
