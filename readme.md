@@ -126,7 +126,8 @@ This error was easily fixed by moving the list assignmnets into the game loop
 
 ### Game not automatically ending on a correct answer
 
-- handled by iterating through to_test, and testing if _ remained
+- The game initially had no win conditions, meaning that even if users had guessed the word, the game would not automatically end
+- I handled this by replacing the letters in the hidden word with the correct letters, and keeping the loop running while there were still underscores in this list
 
 ### Incorrect input on the rules page lead to program exiting unexpectedly 
 
@@ -181,6 +182,7 @@ This error was easily fixed by moving the list assignmnets into the game loop
 
  ### Credits
 
+- This program was developed using the Code Institute Python template [Link Here](https://github.com/Code-Institute-Org/python-essentials-template)
 - Favicon from [This site](https://www.favicon-generator.org/search/)
 - Flowchart from [Diagrams.net](https://app.diagrams.net/)
 - Website mockup from [Am I responsive](https://ui.dev/amiresponsive?url=https://amy-lewis-hangman.herokuapp.com)
