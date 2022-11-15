@@ -57,6 +57,8 @@ This project is a simple hangman game created in python
 
 - If the user guesses the word, they may add their score to the leaderboard
 
+![A screenshot asking the user to enter their name](assets/readme/enter-name.jpg)
+
 - Once their name is added, the updated leaderboard prints out
 
 ![The updated leaderboard has printed, with the new top score reading 'AMY' with a score of 12](assets/readme/new-leaderboard.jpg)
@@ -98,6 +100,14 @@ This project is a simple hangman game created in python
 - The secret word list changes on input, and the display generates a list of letters that have already been tested 
 
 ![A screenshot showing that the user inputted the incorrect answer](assets/readme/incorrect-feat.jpg)
+
+### Error Codes
+
+- In order to make the program user friendly and ensure ease of use, each input is put through validation to ensure that only the correct type of data can be entered
+
+![An error message telling the user what they inputted and what they should be inputting instead](assets/readme/error-code.jpg)
+
+- The Error message tells the user exactly what was wrong with their input and what they should put inputting
 
 ## Bug Fixes
 
