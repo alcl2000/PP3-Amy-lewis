@@ -139,3 +139,5 @@ This error was easily fixed by moving the list assignmnets into the game loop
 
 - Favicon from [This site](https://www.favicon-generator.org/search/)
 - Flowchart from [Diagrams.net](https://app.diagrams.net/)
+- Website mockup from [Am I responsive](https://ui.dev/amiresponsive?url=https://amy-lewis-hangman.herokuapp.com)
+- ASCII art from [here](https://www.asciiart.eu/miscellaneous)
