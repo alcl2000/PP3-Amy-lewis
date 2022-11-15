@@ -191,9 +191,22 @@ This project is a simple hangman game created in python
 
  This project was deployed to Heroku using the student pack 
  The process of deploying to Heroku is as follows:
- - 
-
- 
+ - On first deployment:
+    - Populate the requirements.txt file by running the command 'pip3 freeze > requirements.txt' in the terminal then save, commit and push 
+    - Go to Heroku.com and sign in or create an account 
+    - From the Heroku dashboard click 'Create new app'
+    - Give the app a unique name and select the correct region for where you are
+    - When the app has finished initialising, go to the settings tab and find the 'Config Vars' section
+    - Click 'reveal Config Vars' 
+    - If your project does not use a CREDS.json file, skip this step
+        - Add a new Config Var titled 'CREDS' and insert the contents of your CREDS.json file
+    - Add another Config Var titled 'PORT' with the value 8000
+    - Find the 'Build Packs' section in the settings
+    - Add the buildpacks 'Python' and 'node.js'
+    - Make sure that Python is above node.js in the order, you can move them if you need to
+    - Now move to 'Deployment method' in the 'Deployment' section and select 'link GitHub'
+    - Select the desired repository and branch from your GitHub profile
+    - Click to enable automatic deploys, to allow the app to remain up to date with all your commits
  
  Cloning, Forking 
 
