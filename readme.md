@@ -2,6 +2,8 @@
 
 This project is a simple hangman game created in python
 
+![Am I responsive screenshot showing the website on various ports](assets/readme/am-i-responsive.jpg)
+
 [Live Link]()
 
 ## Contents
@@ -122,5 +124,13 @@ This error was easily fixed by moving the list assignmnets into the game loop
  - Heroku 
 
  ## Development
+
+ ### Deployment
+
+ This project was deployed to Heroku using the student pack 
+ The process of deploying to Heroku is as follows:
+ - 
+
  
- Cloning, Forking and Deployment
+ 
+ Cloning, Forking 
