@@ -12,6 +12,8 @@ This project is a simple hangman game created in python
 - [User Experience](#User-Experience)
     -[User Interface](#user-interface)
 - [Project Goals](#project-goals)
+- [Features](#Features)
+- [Credits](#credits)
 
 ## FlowCharts
 ![The top half of a flowchart showing the beginning actions of starting the hangman game](assets/readme/flowchart-1.jpg)<br>
@@ -45,7 +47,20 @@ This project is a simple hangman game created in python
 
 ### Leaderboard
 
+![A screenshot of the leaerboard, showing the title and the top three scores, all of which say 'test' with a score of 0](assets/readme/leaderboard-feat.jpg)
+
 - The leaderboard shows the title, and the top three scores, if the users' score is higher than the others, it replaces them.
+
+### Leader board Update name
+
+![A paragraph showing the winner's score and asking if they would like to add their name to it](assets/readme/win-leaderboard.jpg)
+
+- If the user guesses the word, they may add their score to the leaderboard
+
+- Once their name is added, the updated leaderboard prints out
+
+![The updated leaderboard has printed, with the new top score reading 'AMY' with a score of 12](assets/readme/new-leaderboard.jpg)
+
 
 ### Rules page
 
