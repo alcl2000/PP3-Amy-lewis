@@ -113,13 +113,14 @@ This project is a simple hangman game created in python
 
 ### Secret word not matching the user input
 
-The secret word is being split into a list, however the input is not being matched up to the correspinding letter in the list.
+- The letters in the 'secret word' were not automatically being revealed when the user inputted the correct ones
+- This was resolved by iterating through the 'to test' list within the iterating through the secret word
 
 ### Letters from previous games not being erased on new game iteration
 
-This error was due to the lists containing guesses and the secret word being defined before the intitial game loop, so they are never cleared to allow the player to add new guesses
+- This error was due to the lists containing guesses and the secret word being defined before the intitial game loop, so they are never cleared to allow the player to add new guesses
 
-This error was easily fixed by moving the list assignmnets into the game loop
+- This error was easily fixed by moving the list assignmnets into the game loop
 
 ![A screenshot showing the array of letters to be guessed extended with old letters](assets/readme/answer-errors.jpg)
 ![A screenshot showing the moved lines of code with the lists moved to the game loop](assets/readme/answer-errors-fix.jpg)
@@ -133,6 +134,22 @@ This error was easily fixed by moving the list assignmnets into the game loop
 
 - The data entered on the rules page was not being correctly validated, while the user is asked for an interger, the data was being interpretted as a string
 - The string could not be used for validation and as such was always returning an error before exiting the program
+
+### Entering '2' or another number on the leaderboard page prompts a return to the rules page
+
+- The input was being validated correctly, but the function 'Start Game' was being called, so when '2' was inputted it would redirect to the rules page
+- 'Start Game' Was replaced with main to fix this error
+
+### Scores not being moved down the leaderboard on each new addition
+
+- New high scores were not automatically moving the second and third scores down upon addition
+- By simply replacing the old scores, the scores were not being automatically moved down, so the scoreboard was displaying incorrectly
+- I fixed this by inputting the new scores as new rules, meaning that they would iterate reguardless of whether the came first, second or third
+
+### The validation loop was unable to account for symbols
+
+- The original validation loop I was using did not have a way to account for inputs that were not intergers but were also not in the english alphabet
+- I added the '.isalpha()' method to the test that the string input was in the alphabet and could therefore be use in the gameplay
 
 ## Testing
 
