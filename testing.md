@@ -7,6 +7,11 @@
 ---
 
 ## Validator
+
+The program produces no errors with the CI PEP8 validator 
+
+The program also produces no errors with the Pycodestyle linter installed
+
 ## User Stories Testing
 
 |User Goal | Outcome|
