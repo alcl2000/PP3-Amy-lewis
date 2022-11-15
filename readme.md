@@ -227,7 +227,38 @@ This project is a simple hangman game created in python
     - Select the desired repository and branch from your GitHub profile
     - Click to enable automatic deploys, to allow the app to remain up to date with all your commits
  
- ### Google Sheets API installation 
+ ### Google Sheets API 
+
+ - To set up the Google Sheets API:
+    - Head to https://console.cloud.google.com/ and sign in or create a free google account
+    - Create a new project by selecting 'Create New proect' 
+    - From within the new project, give the project a name 
+    - Underneath click 'SELECT PROJECT'.
+    - From the sidebar navigate to 'APIs and services', 'Library'.
+    - In the search bar search for google drive, select 'Google drive API' and click 'ENABLE'
+    - Click the 'CREATE CREDENTIALS' button located to the top right of the page
+    - From the dropdown menu under 'Which API are you using?' select 'Google drive API', then under 'What data will you be accessing' choose 'Application data'
+    - Enter a Service Account Name. You can name it whatever you like. I would suggest naming it the same as what you named your project. Then click 'CREATE AND CONTINUE'.
+    - To provide access to your sheets go to the 'Role' dropdown menu and select 'Editor', then click 'Continue'
+    - Under 'Service Accounts' find the account you just created and click it.
+    - Navigate to the 'KEYS' tab and click 'ADD KEY', 'Create new key'. Select 'JSON' and click 'CREATE', this will download a json file to your computer
+    - Next to link the Google Sheets API, navigate back to the library and select 'APIs and services' from the dropdown menu
+    - In the search bar search for 'Google Sheets' and select 'Google Sheets API' and click 'ENABLE'
+    - Now acces your repository from your chosen IDE
+    - Insert the CREDS.json file you downloaded earlier into your workspace
+    - Find the client_email and copy it without the quotation marks, paste this into the sheet you want to in the 'Share' section
+    - Add CREDS.json to your .gitignore file, to protect sensitve information
+    - To utilise these APIs, the following python libraries need to be imported:
+        - Gspread
+        - google.oauth2.service_account
+    - These can be installed by adding the lines 'import gspread' and 'from google.oauth2.service_account import Credentials' to the top of the python file
+    - This code can then be inserted under these lines:
+        - SCOPE = [ "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive" ]
+        - CREDS = Credentials.from_service_account_file('creds.json') SCOPED_CREDS = CREDS.with_scopes(SCOPE) GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) SHEET = GSPREAD_CLIENT.open('google_sheet_name_here')
+    - The name of your spreadsheet should be inserted in place of 'google_sheet_name_here'
+
+
+
 
  ### Credits
 
