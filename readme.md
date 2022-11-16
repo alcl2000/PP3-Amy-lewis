@@ -1,10 +1,10 @@
 # Hangman Python Game
 
-This project is a simple hangman game created in python
-
 ![Am I responsive screenshot showing the website on various ports](assets/readme/am-i-responsive.jpg)
 
-[Live Link](https://amy-lewis-hangman.herokuapp.com/)
+ [Live Link](https://amy-lewis-hangman.herokuapp.com/)
+
+This project is a simple hangman game created in python
 
 ## Contents
 
@@ -13,6 +13,16 @@ This project is a simple hangman game created in python
     -[User Interface](#user-interface)
 - [Project Goals](#project-goals)
 - [Features](#Features)
+- [Testing](#testing)
+-[Technology Used](#technology-used)
+    -[Language](#languages)
+    -[Python frameworks](#python-frameworks-used)
+    -[Other technologies](#other-technologies)
+-[Development](#development)
+    -[Cloning](#cloning)
+    -[Forking](#forking)
+    -[Deployment](#deployment)
+    -[Google Sheets API](#google-sheets-api)
 - [Credits](#credits)
 
 ## FlowCharts
@@ -256,9 +266,6 @@ This project is a simple hangman game created in python
         - SCOPE = [ "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive" ]
         - CREDS = Credentials.from_service_account_file('creds.json') SCOPED_CREDS = CREDS.with_scopes(SCOPE) GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS) SHEET = GSPREAD_CLIENT.open('google_sheet_name_here')
     - The name of your spreadsheet should be inserted in place of 'google_sheet_name_here'
-
-
-
 
  ### Credits
 
